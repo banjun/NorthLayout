@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         textLabel.stringValue = "Some text label"
         textLabel.backgroundColor = NSColor.lightGrayColor()
         
-        let autolayout = view.autolayoutFormat(["p": 8], [
+        let autolayout = view.northLayoutFormat(["p": 8], [
             "name": nameLabel,
             "text": textLabel,
             ])

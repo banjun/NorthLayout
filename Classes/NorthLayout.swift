@@ -16,11 +16,11 @@
 
 
 public extension UXView {
-    public func autolayoutFormat(metrics: [String:CGFloat], _ views: [String:UXView]) -> String -> Void {
-        return self.autolayoutFormat(metrics, views, options: nil)
+    public func northLayoutFormat(metrics: [String:CGFloat], _ views: [String:UXView]) -> String -> Void {
+        return self.northLayoutFormat(metrics, views, options: nil)
     }
     
-    public func autolayoutFormat(metrics: [String:CGFloat], _ views: [String:UXView], options: NSLayoutFormatOptions) -> String -> Void {
+    public func northLayoutFormat(metrics: [String:CGFloat], _ views: [String:UXView], options: NSLayoutFormatOptions) -> String -> Void {
         for v in views.values {
             #if os(iOS)
                 let isAlreadySubview = v.isDescendantOfView(self)

@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         textLabel.text = "Some text label"
         textLabel.backgroundColor = UIColor.lightGrayColor()
         
-        let autolayout = view.autolayoutFormat(["p": 8], [
+        let autolayout = view.northLayoutFormat(["p": 8], [
             "name": nameLabel,
             "text": textLabel,
             ])
