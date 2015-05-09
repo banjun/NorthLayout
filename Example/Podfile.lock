@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  NorthLayout: 06b2dd7327b36dcd87155de394fa2f1dfecff819
+  NorthLayout: f1a1753ef83ff5cd363c9fa92d14e72c97a485c9
 
 COCOAPODS: 0.37.1

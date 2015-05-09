@@ -6,3 +6,9 @@ target 'NorthLayout-ios' do
     pod 'NorthLayout', :path => '../'
 end
 
+target 'NorthLayout-osx' do
+    platform :osx, '10.10'
+    link_with 'NorthLayout-osx', 'NorthLayout-osx-Tests'
+    pod 'NorthLayout', :path => '../'
+end
+
