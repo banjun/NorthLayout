@@ -5,12 +5,6 @@
 [![License](https://img.shields.io/cocoapods/l/NorthLayout.svg?style=flat)](http://cocoapods.org/pods/NorthLayout)
 [![Platform](https://img.shields.io/cocoapods/p/NorthLayout.svg?style=flat)](http://cocoapods.org/pods/NorthLayout)
 
-## Usage
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
 ## Installation
 
 NorthLayout is available through [CocoaPods](http://cocoapods.org). To install
@@ -20,9 +14,35 @@ it, simply add the following line to your Podfile:
 pod "NorthLayout"
 ```
 
-## Author
+## Usage
 
-banjun, banjun@gmail.com
+* `view.northLayoutFormat(_:_:)` to get autolayout closure for view
+* `autolayout(...)` to layout with Autolayout Visual Format Language
+
+```swift
+override func loadView() {
+    super.loadView()
+    
+    edgesForExtendedLayout = nil
+    view.backgroundColor = UIColor.whiteColor()
+    
+    let nameLabel = UILabel()
+    nameLabel.text = "Name"
+    nameLabel.backgroundColor = UIColor.grayColor()
+    
+    let textLabel = UILabel()
+    textLabel.text = "Some text label"
+    textLabel.backgroundColor = UIColor.lightGrayColor()
+    
+    let autolayout = view.northLayoutFormat(["p": 8], [
+        "name": nameLabel,
+        "text": textLabel,
+        ])
+    autolayout("H:|-p-[name]-p-|")
+    autolayout("H:|-p-[text]-p-|")
+    autolayout("V:|-p-[name]-p-[text]")
+}
+```
 
 ## License
 
