@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/NorthLayout.svg?style=flat)](http://cocoapods.org/pods/NorthLayout)
 [![Platform](https://img.shields.io/cocoapods/p/NorthLayout.svg?style=flat)](http://cocoapods.org/pods/NorthLayout)
 
+The fast path to autolayout views in code
+
 ## Installation
 
 NorthLayout is available through [CocoaPods](http://cocoapods.org). To install
