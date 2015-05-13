@@ -88,6 +88,10 @@ with constraints:
 
 ![ios-example-constraints](misc/ios-example-constraints.png)
 
+## The Name
+
+NorthLayout is named after where it was cocoapodized, [Lake Toya](http://en.wikipedia.org/wiki/Lake_Tōya) in the North prefecture of Japan, the setting of [Celestial Method](http://en.wikipedia.org/wiki/Celestial_Method).
+
 ## License
 
 NorthLayout is available under the MIT license. See the LICENSE file for more info.
