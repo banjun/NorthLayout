@@ -17,7 +17,7 @@
 
 public extension UXView {
     public func northLayoutFormat(metrics: [String:CGFloat], _ views: [String:UXView]) -> String -> Void {
-        return self.northLayoutFormat(metrics, views, options: nil)
+        return self.northLayoutFormat(metrics, views, options: [])
     }
     
     public func northLayoutFormat(metrics: [String:CGFloat], _ views: [String:UXView], options: NSLayoutFormatOptions) -> String -> Void {
@@ -28,11 +28,7 @@ public extension UXView {
                 let isAlreadySubview = v.isDescendantOf(self)
             #endif
             if !isAlreadySubview {
-                #if os(iOS)
-                    v.setTranslatesAutoresizingMaskIntoConstraints(false)
-                    #else
-                    v.translatesAutoresizingMaskIntoConstraints = false
-                #endif
+                v.translatesAutoresizingMaskIntoConstraints = false
                 self.addSubview(v)
             }
         }
