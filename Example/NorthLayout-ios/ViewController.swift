@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        edgesForExtendedLayout = nil
+        edgesForExtendedLayout = .None
         view.backgroundColor = UIColor.whiteColor()
         
         let iconView = UIImageView(image: colorImage(UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
@@ -43,14 +43,14 @@ class ViewController: UIViewController {
         let textLabel = UILabel()
         textLabel.text = "Some text go here"
         
-        let favButton = UIButton.buttonWithType(.System) as! UIButton
+        let favButton = UIButton(type: .System)
         favButton.setTitle("⭐️", forState: .Normal)
         favButton.backgroundColor = UIColor(red: 0.17, green: 0.29, blue: 0.45, alpha: 1.0)
         favButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         favButton.layer.cornerRadius = 4
         favButton.clipsToBounds = true
         
-        let replyButton = UIButton.buttonWithType(.System) as! UIButton
+        let replyButton = UIButton(type: .System)
         replyButton.setTitle("Reply", forState: .Normal)
         replyButton.backgroundColor = favButton.backgroundColor
         replyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
