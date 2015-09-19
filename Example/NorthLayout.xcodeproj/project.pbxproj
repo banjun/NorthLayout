@@ -20,6 +20,11 @@
 		EAD913451AFE1FDE00F46CB9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD913441AFE1FDE00F46CB9 /* Images.xcassets */; };
 		EAD913481AFE1FDE00F46CB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD913461AFE1FDE00F46CB9 /* LaunchScreen.xib */; };
 		EAD913541AFE1FDE00F46CB9 /* NorthLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD913531AFE1FDE00F46CB9 /* NorthLayoutTests.swift */; };
+		EAE3AAA61BACFD4E000242CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE3AAA51BACFD4E000242CA /* AppDelegate.swift */; };
+		EAE3AAA81BACFD4E000242CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE3AAA71BACFD4E000242CA /* ViewController.swift */; };
+		EAE3AAAB1BACFD4E000242CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE3AAA91BACFD4E000242CA /* Main.storyboard */; };
+		EAE3AAAD1BACFD4F000242CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAE3AAAC1BACFD4F000242CA /* Assets.xcassets */; };
+		EAE3AAB81BACFD4F000242CA /* NorthLayout_tvosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE3AAB71BACFD4F000242CA /* NorthLayout_tvosTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = EAD913371AFE1FDE00F46CB9;
 			remoteInfo = NorthLayout;
+		};
+		EAE3AAB41BACFD4F000242CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD913301AFE1FDE00F46CB9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAE3AAA21BACFD4E000242CA;
+			remoteInfo = "NorthLayout-tvos";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -65,6 +77,15 @@
 		EAD9134D1AFE1FDE00F46CB9 /* NorthLayout-ios-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NorthLayout-ios-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD913521AFE1FDE00F46CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAD913531AFE1FDE00F46CB9 /* NorthLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthLayoutTests.swift; sourceTree = "<group>"; };
+		EAE3AAA31BACFD4E000242CA /* NorthLayout-tvos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NorthLayout-tvos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAE3AAA51BACFD4E000242CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EAE3AAA71BACFD4E000242CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EAE3AAAA1BACFD4E000242CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EAE3AAAC1BACFD4F000242CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EAE3AAAE1BACFD4F000242CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAE3AAB31BACFD4F000242CA /* NorthLayout-tvosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NorthLayout-tvosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAE3AAB71BACFD4F000242CA /* NorthLayout_tvosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthLayout_tvosTests.swift; sourceTree = "<group>"; };
+		EAE3AAB91BACFD4F000242CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +118,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				557DC73B8628D02D0011ECA7 /* Pods_NorthLayout_ios.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAE3AAA01BACFD4E000242CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAE3AAB01BACFD4F000242CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +203,8 @@
 				EAD913501AFE1FDE00F46CB9 /* NorthLayout-ios-Tests */,
 				EA3630171AFE29520015000C /* NorthLayout-osx */,
 				EA3630281AFE29520015000C /* NorthLayout-osx-Tests */,
+				EAE3AAA41BACFD4E000242CA /* NorthLayout-tvos */,
+				EAE3AAB61BACFD4F000242CA /* NorthLayout-tvosTests */,
 				EAD913391AFE1FDE00F46CB9 /* Products */,
 				3C7D9F5C690DEE00046181E8 /* Pods */,
 				61D17B006B4A0CA13BB3C183 /* Frameworks */,
@@ -181,6 +218,8 @@
 				EAD9134D1AFE1FDE00F46CB9 /* NorthLayout-ios-Tests.xctest */,
 				EA3630161AFE29520015000C /* NorthLayout-osx.app */,
 				EA3630251AFE29520015000C /* NorthLayout-osx-Tests.xctest */,
+				EAE3AAA31BACFD4E000242CA /* NorthLayout-tvos.app */,
+				EAE3AAB31BACFD4F000242CA /* NorthLayout-tvosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -220,6 +259,27 @@
 				EAD913521AFE1FDE00F46CB9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EAE3AAA41BACFD4E000242CA /* NorthLayout-tvos */ = {
+			isa = PBXGroup;
+			children = (
+				EAE3AAA51BACFD4E000242CA /* AppDelegate.swift */,
+				EAE3AAA71BACFD4E000242CA /* ViewController.swift */,
+				EAE3AAA91BACFD4E000242CA /* Main.storyboard */,
+				EAE3AAAC1BACFD4F000242CA /* Assets.xcassets */,
+				EAE3AAAE1BACFD4F000242CA /* Info.plist */,
+			);
+			path = "NorthLayout-tvos";
+			sourceTree = "<group>";
+		};
+		EAE3AAB61BACFD4F000242CA /* NorthLayout-tvosTests */ = {
+			isa = PBXGroup;
+			children = (
+				EAE3AAB71BACFD4F000242CA /* NorthLayout_tvosTests.swift */,
+				EAE3AAB91BACFD4F000242CA /* Info.plist */,
+			);
+			path = "NorthLayout-tvosTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +367,41 @@
 			productReference = EAD9134D1AFE1FDE00F46CB9 /* NorthLayout-ios-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		EAE3AAA21BACFD4E000242CA /* NorthLayout-tvos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAE3AABE1BACFD4F000242CA /* Build configuration list for PBXNativeTarget "NorthLayout-tvos" */;
+			buildPhases = (
+				EAE3AA9F1BACFD4E000242CA /* Sources */,
+				EAE3AAA01BACFD4E000242CA /* Frameworks */,
+				EAE3AAA11BACFD4E000242CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NorthLayout-tvos";
+			productName = "NorthLayout-tvos";
+			productReference = EAE3AAA31BACFD4E000242CA /* NorthLayout-tvos.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EAE3AAB21BACFD4F000242CA /* NorthLayout-tvosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAE3AABF1BACFD4F000242CA /* Build configuration list for PBXNativeTarget "NorthLayout-tvosTests" */;
+			buildPhases = (
+				EAE3AAAF1BACFD4F000242CA /* Sources */,
+				EAE3AAB01BACFD4F000242CA /* Frameworks */,
+				EAE3AAB11BACFD4F000242CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAE3AAB51BACFD4F000242CA /* PBXTargetDependency */,
+			);
+			name = "NorthLayout-tvosTests";
+			productName = "NorthLayout-tvosTests";
+			productReference = EAE3AAB31BACFD4F000242CA /* NorthLayout-tvosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -331,6 +426,13 @@
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = EAD913371AFE1FDE00F46CB9;
 					};
+					EAE3AAA21BACFD4E000242CA = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					EAE3AAB21BACFD4F000242CA = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = EAE3AAA21BACFD4E000242CA;
+					};
 				};
 			};
 			buildConfigurationList = EAD913331AFE1FDE00F46CB9 /* Build configuration list for PBXProject "NorthLayout" */;
@@ -350,6 +452,8 @@
 				EAD9134C1AFE1FDE00F46CB9 /* NorthLayout-ios-Tests */,
 				EA3630151AFE29510015000C /* NorthLayout-osx */,
 				EA3630241AFE29520015000C /* NorthLayout-osx-Tests */,
+				EAE3AAA21BACFD4E000242CA /* NorthLayout-tvos */,
+				EAE3AAB21BACFD4F000242CA /* NorthLayout-tvosTests */,
 			);
 		};
 /* End PBXProject section */
@@ -381,6 +485,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EAD9134B1AFE1FDE00F46CB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAE3AAA11BACFD4E000242CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAE3AAAD1BACFD4F000242CA /* Assets.xcassets in Resources */,
+				EAE3AAAB1BACFD4E000242CA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAE3AAB11BACFD4F000242CA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -606,6 +726,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAE3AA9F1BACFD4E000242CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAE3AAA81BACFD4E000242CA /* ViewController.swift in Sources */,
+				EAE3AAA61BACFD4E000242CA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAE3AAAF1BACFD4F000242CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAE3AAB81BACFD4F000242CA /* NorthLayout_tvosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -618,6 +755,11 @@
 			isa = PBXTargetDependency;
 			target = EAD913371AFE1FDE00F46CB9 /* NorthLayout-ios */;
 			targetProxy = EAD9134E1AFE1FDE00F46CB9 /* PBXContainerItemProxy */;
+		};
+		EAE3AAB51BACFD4F000242CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAE3AAA21BACFD4E000242CA /* NorthLayout-tvos */;
+			targetProxy = EAE3AAB41BACFD4F000242CA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -636,6 +778,14 @@
 				EAD913471AFE1FDE00F46CB9 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		EAE3AAA91BACFD4E000242CA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAE3AAAA1BACFD4E000242CA /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -873,6 +1023,66 @@
 			};
 			name = Release;
 		};
+		EAE3AABA1BACFD4F000242CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "NorthLayout-tvos/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.banjun.NorthLayout-tvos";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		EAE3AABB1BACFD4F000242CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "NorthLayout-tvos/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.banjun.NorthLayout-tvos";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		EAE3AABC1BACFD4F000242CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "NorthLayout-tvosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.banjun.NorthLayout-tvosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NorthLayout-tvos.app/NorthLayout-tvos";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		EAE3AABD1BACFD4F000242CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "NorthLayout-tvosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.banjun.NorthLayout-tvosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NorthLayout-tvos.app/NorthLayout-tvos";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -920,6 +1130,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		EAE3AABE1BACFD4F000242CA /* Build configuration list for PBXNativeTarget "NorthLayout-tvos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAE3AABA1BACFD4F000242CA /* Debug */,
+				EAE3AABB1BACFD4F000242CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EAE3AABF1BACFD4F000242CA /* Build configuration list for PBXNativeTarget "NorthLayout-tvosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAE3AABC1BACFD4F000242CA /* Debug */,
+				EAE3AABD1BACFD4F000242CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
