@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		557DC73B8628D02D0011ECA7 /* Pods_NorthLayout_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F039D05235B4E3F41898A1F /* Pods_NorthLayout_ios.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		599938B4E3D72B3063D20042 /* Pods_NorthLayoutTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A00BD756D5919C03DD937649 /* Pods_NorthLayoutTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5A6B5746432CC6A45F1A4C2C /* Pods_NorthLayout_osx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56858A98C4EF9479CAA5A63 /* Pods_NorthLayout_osx.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8432520C08897B776B1A88B4 /* Pods_NorthLayout_osx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56858A98C4EF9479CAA5A63 /* Pods_NorthLayout_osx.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CFB11189B450028830A371FD /* Pods_NorthLayout_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F039D05235B4E3F41898A1F /* Pods_NorthLayout_ios.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		EA3448A4C5C54028B04D28A9 /* Pods_NorthLayout_ios_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B82D14DD92C663A5270492 /* Pods_NorthLayout_ios_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EA36301B1AFE29520015000C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36301A1AFE29520015000C /* AppDelegate.swift */; };
 		EA36301D1AFE29520015000C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA36301C1AFE29520015000C /* Images.xcassets */; };
 		EA3630201AFE29520015000C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA36301E1AFE29520015000C /* MainMenu.xib */; };
@@ -98,8 +96,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				599938B4E3D72B3063D20042 /* Pods_NorthLayoutTests.framework in Frameworks */,
-				EA3448A4C5C54028B04D28A9 /* Pods_NorthLayout_ios_Tests.framework in Frameworks */,
 				557DC73B8628D02D0011ECA7 /* Pods_NorthLayout_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
