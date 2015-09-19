@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		557DC73B8628D02D0011ECA7 /* Pods_NorthLayout_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F039D05235B4E3F41898A1F /* Pods_NorthLayout_ios.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5A6B5746432CC6A45F1A4C2C /* Pods_NorthLayout_osx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56858A98C4EF9479CAA5A63 /* Pods_NorthLayout_osx.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6DDAAD6C16A3E684CB145DDA /* Pods_NorthLayout_tvos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F50E3D585EDDFBEBE4A2763 /* Pods_NorthLayout_tvos.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8432520C08897B776B1A88B4 /* Pods_NorthLayout_osx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56858A98C4EF9479CAA5A63 /* Pods_NorthLayout_osx.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CFB11189B450028830A371FD /* Pods_NorthLayout_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F039D05235B4E3F41898A1F /* Pods_NorthLayout_ios.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EA36301B1AFE29520015000C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36301A1AFE29520015000C /* AppDelegate.swift */; };
@@ -57,7 +58,9 @@
 		4F039D05235B4E3F41898A1F /* Pods_NorthLayout_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NorthLayout_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A63CFEBBBE6BB3DB33F0A5A /* Pods-NorthLayout-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NorthLayout-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NorthLayout-ios/Pods-NorthLayout-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		95B50F121B078C3A60769739 /* Pods-NorthLayout-osx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NorthLayout-osx.release.xcconfig"; path = "Pods/Target Support Files/Pods-NorthLayout-osx/Pods-NorthLayout-osx.release.xcconfig"; sourceTree = "<group>"; };
+		96195677D130D38ECA46D5F9 /* Pods-NorthLayout-tvos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NorthLayout-tvos.release.xcconfig"; path = "Pods/Target Support Files/Pods-NorthLayout-tvos/Pods-NorthLayout-tvos.release.xcconfig"; sourceTree = "<group>"; };
 		9B2EF5088116611AC5D5A37A /* Pods-NorthLayout-osx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NorthLayout-osx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NorthLayout-osx/Pods-NorthLayout-osx.debug.xcconfig"; sourceTree = "<group>"; };
+		9F50E3D585EDDFBEBE4A2763 /* Pods_NorthLayout_tvos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NorthLayout_tvos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00BD756D5919C03DD937649 /* Pods_NorthLayoutTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NorthLayoutTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56858A98C4EF9479CAA5A63 /* Pods_NorthLayout_osx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NorthLayout_osx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3630161AFE29520015000C /* NorthLayout-osx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NorthLayout-osx.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +89,7 @@
 		EAE3AAB31BACFD4F000242CA /* NorthLayout-tvosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NorthLayout-tvosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAE3AAB71BACFD4F000242CA /* NorthLayout_tvosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthLayout_tvosTests.swift; sourceTree = "<group>"; };
 		EAE3AAB91BACFD4F000242CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F774A2BFAE96E73A1C85E4E7 /* Pods-NorthLayout-tvos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NorthLayout-tvos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NorthLayout-tvos/Pods-NorthLayout-tvos.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DDAAD6C16A3E684CB145DDA /* Pods_NorthLayout_tvos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +150,8 @@
 				46B6F128850344A7B8159D31 /* Pods-NorthLayout-ios.release.xcconfig */,
 				9B2EF5088116611AC5D5A37A /* Pods-NorthLayout-osx.debug.xcconfig */,
 				95B50F121B078C3A60769739 /* Pods-NorthLayout-osx.release.xcconfig */,
+				F774A2BFAE96E73A1C85E4E7 /* Pods-NorthLayout-tvos.debug.xcconfig */,
+				96195677D130D38ECA46D5F9 /* Pods-NorthLayout-tvos.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -156,6 +163,7 @@
 				A00BD756D5919C03DD937649 /* Pods_NorthLayoutTests.framework */,
 				33B82D14DD92C663A5270492 /* Pods_NorthLayout_ios_Tests.framework */,
 				C56858A98C4EF9479CAA5A63 /* Pods_NorthLayout_osx.framework */,
+				9F50E3D585EDDFBEBE4A2763 /* Pods_NorthLayout_tvos.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -371,9 +379,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EAE3AABE1BACFD4F000242CA /* Build configuration list for PBXNativeTarget "NorthLayout-tvos" */;
 			buildPhases = (
+				6AECD07344F3DADE09997DED /* Check Pods Manifest.lock */,
 				EAE3AA9F1BACFD4E000242CA /* Sources */,
 				EAE3AAA01BACFD4E000242CA /* Frameworks */,
 				EAE3AAA11BACFD4E000242CA /* Resources */,
+				3D16D14AD45FB1DEE839BEBC /* Embed Pods Frameworks */,
+				CF630476F5317EB588DFE10C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -540,6 +551,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		3D16D14AD45FB1DEE839BEBC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-tvos/Pods-NorthLayout-tvos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5B8F8CDD6ECB05CEBEB9D97F /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -553,6 +579,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-ios/Pods-NorthLayout-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6AECD07344F3DADE09997DED /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6C33155C4A78B5DE825BD0B1 /* Embed Pods Frameworks */ = {
@@ -643,6 +684,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CF630476F5317EB588DFE10C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-tvos/Pods-NorthLayout-tvos-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DC4378AD3FE0D88F21199126 /* Copy Pods Resources */ = {
@@ -1025,6 +1081,7 @@
 		};
 		EAE3AABA1BACFD4F000242CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F774A2BFAE96E73A1C85E4E7 /* Pods-NorthLayout-tvos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1041,6 +1098,7 @@
 		};
 		EAE3AABB1BACFD4F000242CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96195677D130D38ECA46D5F9 /* Pods-NorthLayout-tvos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1138,6 +1196,7 @@
 				EAE3AABB1BACFD4F000242CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EAE3AABF1BACFD4F000242CA /* Build configuration list for PBXNativeTarget "NorthLayout-tvosTests" */ = {
 			isa = XCConfigurationList;
@@ -1146,6 +1205,7 @@
 				EAE3AABD1BACFD4F000242CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

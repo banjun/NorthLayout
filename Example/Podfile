@@ -12,3 +12,8 @@ target 'NorthLayout-osx' do
     pod 'NorthLayout', :path => '../'
 end
 
+target 'NorthLayout-tvos' do
+    platform :ios, '8.0' # FIXME: use :tvos
+    link_with 'NorthLayout-tvos', 'NorthLayout-tvos-Tests'
+    pod 'NorthLayout', :path => '../'
+end
