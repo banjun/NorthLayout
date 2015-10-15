@@ -20,14 +20,28 @@ private func colorImage(color: UIColor) -> UIImage {
 }
 
 
+@IBDesignable
+class ViewControllerView: IBDesignableViewControllerView {
+    let vc = ViewController()
+    override func prepareViewControllerForInterfaceBuilder() -> UIViewController {
+        return vc
+    }
+    
+    @IBInspectable var iconColor: UIColor? {
+        didSet { vc.iconView.image = iconColor.map{colorImage($0)} }
+    }
+}
+
 class ViewController: UIViewController {
+    
+    let iconView = UIImageView(image: colorImage(UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
+    
     override func loadView() {
         super.loadView()
         
         edgesForExtendedLayout = .None
         view.backgroundColor = UIColor.whiteColor()
         
-        let iconView = UIImageView(image: colorImage(UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
         let iconWidth = CGFloat(32)
         iconView.layer.cornerRadius = iconWidth / 2
         iconView.clipsToBounds = true
@@ -39,6 +53,7 @@ class ViewController: UIViewController {
         dateLabel.text = "1 min ago"
         dateLabel.font = UIFont.systemFontOfSize(12)
         dateLabel.textColor = UIColor.lightGrayColor()
+        dateLabel.setContentHuggingPriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
         
         let textLabel = UILabel()
         textLabel.text = "Some text go here"
