@@ -37,3 +37,18 @@ public extension UXView {
         }
     }
 }
+
+public class IBDesignableViewControllerView: UIView {
+    /// subclasses must override
+    public func prepareViewControllerForInterfaceBuilder() -> UIViewController { return UIViewController() }
+    
+    override public func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        
+        let vc = prepareViewControllerForInterfaceBuilder()
+        let v = vc.view
+        v.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        v.frame = bounds
+        addSubview(v)
+    }
+}
