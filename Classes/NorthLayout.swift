@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 banjun. All rights reserved.
 //
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
     import UIKit
     public typealias UXView = UIView
     #else
@@ -22,7 +22,7 @@ public extension UXView {
     
     public func northLayoutFormat(metrics: [String:CGFloat], _ views: [String:UXView], options: NSLayoutFormatOptions) -> String -> Void {
         for v in views.values {
-            #if os(iOS)
+            #if os(iOS) || os(tvOS)
                 let isAlreadySubview = v.isDescendantOfView(self)
                 #else
                 let isAlreadySubview = v.isDescendantOf(self)
