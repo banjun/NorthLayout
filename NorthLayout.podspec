@@ -11,9 +11,11 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/banjun/NorthLayout.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/banjun'
   s.ios.deployment_target = '8.0'
+  s.tvos.deployment_target = '9.0'
   s.osx.deployment_target = '10.10'
   s.source_files = 'Classes/**/*'
   s.ios.frameworks = 'UIKit'
+  s.tvos.frameworks = 'UIKit'
   s.osx.frameworks = 'AppKit'
   s.requires_arc = true
 end

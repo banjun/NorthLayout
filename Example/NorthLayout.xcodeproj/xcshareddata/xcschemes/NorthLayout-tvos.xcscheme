@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0710"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EAD913371AFE1FDE00F46CB9"
-               BuildableName = "NorthLayout-ios.app"
-               BlueprintName = "NorthLayout-ios"
+               BlueprintIdentifier = "EAE3AAA21BACFD4E000242CA"
+               BuildableName = "NorthLayout-tvos.app"
+               BlueprintName = "NorthLayout-tvos"
                ReferencedContainer = "container:NorthLayout.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EAD9134C1AFE1FDE00F46CB9"
-               BuildableName = "NorthLayout-ios-Tests.xctest"
-               BlueprintName = "NorthLayout-ios-Tests"
+               BlueprintIdentifier = "EAE3AAB21BACFD4F000242CA"
+               BuildableName = "NorthLayout-tvosTests.xctest"
+               BlueprintName = "NorthLayout-tvosTests"
                ReferencedContainer = "container:NorthLayout.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -57,9 +57,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EAD913371AFE1FDE00F46CB9"
-            BuildableName = "NorthLayout-ios.app"
-            BlueprintName = "NorthLayout-ios"
+            BlueprintIdentifier = "EAE3AAA21BACFD4E000242CA"
+            BuildableName = "NorthLayout-tvos.app"
+            BlueprintName = "NorthLayout-tvos"
             ReferencedContainer = "container:NorthLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -80,9 +80,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EAD913371AFE1FDE00F46CB9"
-            BuildableName = "NorthLayout-ios.app"
-            BlueprintName = "NorthLayout-ios"
+            BlueprintIdentifier = "EAE3AAA21BACFD4E000242CA"
+            BuildableName = "NorthLayout-tvos.app"
+            BlueprintName = "NorthLayout-tvos"
             ReferencedContainer = "container:NorthLayout.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -99,9 +99,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EAD913371AFE1FDE00F46CB9"
-            BuildableName = "NorthLayout-ios.app"
-            BlueprintName = "NorthLayout-ios"
+            BlueprintIdentifier = "EAE3AAA21BACFD4E000242CA"
+            BuildableName = "NorthLayout-tvos.app"
+            BlueprintName = "NorthLayout-tvos"
             ReferencedContainer = "container:NorthLayout.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -1,19 +1,21 @@
 use_frameworks!
+    
 
-target 'NorthLayout-ios' do
+target 'ios' do
     platform :ios, '8.0'
     link_with 'NorthLayout-ios', 'NorthLayout-ios-Tests'
     pod 'NorthLayout', :path => '../'
 end
 
-target 'NorthLayout-osx' do
+target 'osx' do
     platform :osx, '10.10'
     link_with 'NorthLayout-osx', 'NorthLayout-osx-Tests'
     pod 'NorthLayout', :path => '../'
 end
 
-target 'NorthLayout-tvos' do
-    platform :ios, '8.0' # FIXME: use :tvos
-    link_with 'NorthLayout-tvos', 'NorthLayout-tvos-Tests'
+target 'tvos' do
+    platform :tvos, '9.0'
+    link_with 'NorthLayout-tvos', 'NorthLayout-tvosTests'
     pod 'NorthLayout', :path => '../'
 end
+
