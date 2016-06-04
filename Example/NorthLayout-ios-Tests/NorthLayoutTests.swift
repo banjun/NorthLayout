@@ -12,9 +12,9 @@ import NorthLayout
 
 class NorthLayoutTests: XCTestCase {
     let rootView: UIView = {
-        let window = UIWindow(frame: CGRectMake(0, 0, 320, 480))
+        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 320, height: 480))
         let v = UIView(frame: window.bounds)
-        v.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        v.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         window.addSubview(v)
         return v
         }()
@@ -38,8 +38,8 @@ class NorthLayoutTests: XCTestCase {
         rootView.layoutIfNeeded()
         
         XCTAssertEqual(label.frame.origin.x, p)
-        XCTAssertEqual(field.frame.origin.x, CGRectGetMaxX(label.frame) + p)
-        XCTAssertEqual(CGRectGetMaxX(field.frame), rootView.frame.width - p)
+        XCTAssertEqual(field.frame.origin.x, label.frame.maxX + p)
+        XCTAssertEqual(field.frame.maxX, rootView.frame.width - p)
         
         XCTAssertEqual(label.frame.origin.y, p)
         XCTAssertEqual(field.frame.origin.y, p)

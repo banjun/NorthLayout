@@ -11,10 +11,10 @@ import NorthLayout
 
 
 private func colorImage(color: UIColor) -> UIImage {
-    UIGraphicsBeginImageContext(CGSizeMake(1, 1))
+    UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
     color.set()
-    UIRectFill(CGRectMake(0, 0, 1, 1))
-    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIRectFill(CGRect(x: 0, y: 0, width: 1, height: 1))
+    let image = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return image
 }
@@ -24,10 +24,10 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        edgesForExtendedLayout = .None
-        view.backgroundColor = UIColor.whiteColor()
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white()
         
-        let iconView = UIImageView(image: colorImage(UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
+        let iconView = UIImageView(image: colorImage(color: UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
         let iconWidth = CGFloat(32)
         iconView.layer.cornerRadius = iconWidth / 2
         iconView.clipsToBounds = true
@@ -37,23 +37,23 @@ class ViewController: UIViewController {
         
         let dateLabel = UILabel()
         dateLabel.text = "1 min ago"
-        dateLabel.font = UIFont.systemFontOfSize(12)
-        dateLabel.textColor = UIColor.lightGrayColor()
+        dateLabel.font = UIFont.systemFont(ofSize: 12)
+        dateLabel.textColor = .lightGray()
         
         let textLabel = UILabel()
         textLabel.text = "Some text go here"
         
-        let favButton = UIButton(type: .System)
-        favButton.setTitle("⭐️", forState: .Normal)
+        let favButton = UIButton(type: .system)
+        favButton.setTitle("⭐️", for: [])
         favButton.backgroundColor = UIColor(red: 0.17, green: 0.29, blue: 0.45, alpha: 1.0)
-        favButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        favButton.setTitleColor(.white(), for: [])
         favButton.layer.cornerRadius = 4
         favButton.clipsToBounds = true
         
-        let replyButton = UIButton(type: .System)
-        replyButton.setTitle("Reply", forState: .Normal)
+        let replyButton = UIButton(type: .system)
+        replyButton.setTitle("Reply", for: [])
         replyButton.backgroundColor = favButton.backgroundColor
-        replyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        replyButton.setTitleColor(.white(), for: [])
         replyButton.layer.cornerRadius = 4
         replyButton.clipsToBounds = true
         

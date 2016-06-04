@@ -16,14 +16,14 @@
 
 
 public extension UXView {
-    public func northLayoutFormat(metrics: [String:CGFloat], _ views: [String:UXView]) -> String -> Void {
+    public func northLayoutFormat(_ metrics: [String:CGFloat], _ views: [String:UXView]) -> (String) -> Void {
         return self.northLayoutFormat(metrics, views, options: [])
     }
     
-    public func northLayoutFormat(metrics: [String:CGFloat], _ views: [String:UXView], options: NSLayoutFormatOptions) -> String -> Void {
+    public func northLayoutFormat(_ metrics: [String:CGFloat], _ views: [String:UXView], options: NSLayoutFormatOptions) -> (String) -> Void {
         for v in views.values {
             #if os(iOS)
-                let isAlreadySubview = v.isDescendantOfView(self)
+                let isAlreadySubview = v.isDescendant(of: self)
                 #else
                 let isAlreadySubview = v.isDescendantOf(self)
             #endif
@@ -33,7 +33,7 @@ public extension UXView {
             }
         }
         return { (format: String) in
-            self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: options, metrics: metrics, views: views))
+            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: metrics, views: views))
         }
     }
 }
