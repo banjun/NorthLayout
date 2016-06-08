@@ -14,7 +14,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "104FBF00A966ACDCB92A8138"
+               BlueprintIdentifier = "53A0484ECFC0A7FD340B891C1115908E"
                BuildableName = "Pods_NorthLayout_ios.framework"
                BlueprintName = "Pods-NorthLayout-ios"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
