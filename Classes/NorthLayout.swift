@@ -6,25 +6,20 @@
 //  Copyright (c) 2015 banjun. All rights reserved.
 //
 
-#if os(iOS)
-    import UIKit
-    public typealias UXView = UIView
-    #else
-    import AppKit
-    public typealias UXView = NSView
-#endif
 
+public protocol NorthLayoutableView: class {
+    func isDescendant(of: Self) -> Bool
+    var translatesAutoresizingMaskIntoConstraints: Bool { get set }
+    func addSubview(_ subview: Self)
+    func addConstraints(_ constraints: [NSLayoutConstraint])
+}
 
-public extension UXView {
-    public func northLayoutFormat(_ metrics: [String:CGFloat], _ views: [String:UXView]) -> (String) -> Void {
-        return self.northLayoutFormat(metrics, views, options: [])
-    }
-    
-    public func northLayoutFormat(_ metrics: [String:CGFloat], _ views: [String:UXView], options: NSLayoutFormatOptions) -> (String) -> Void {
+public extension NorthLayoutableView {
+    public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: Self], options: NSLayoutFormatOptions = []) -> (String) -> Void {
         for v in views.values {
             if !v.isDescendant(of: self) {
                 v.translatesAutoresizingMaskIntoConstraints = false
-                self.addSubview(v)
+                addSubview(v)
             }
         }
         return { (format: String) in
@@ -32,3 +27,11 @@ public extension UXView {
         }
     }
 }
+
+#if os(iOS)
+    import class UIKit.UIView
+    extension UIView: NorthLayoutableView {}
+#else
+    import class AppKit.NSView
+    extension NSView: NorthLayoutableView {}
+#endif
