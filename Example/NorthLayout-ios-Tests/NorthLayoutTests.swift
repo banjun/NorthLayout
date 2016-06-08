@@ -44,4 +44,14 @@ class NorthLayoutTests: XCTestCase {
         XCTAssertEqual(label.frame.origin.y, p)
         XCTAssertEqual(field.frame.origin.y, p)
     }
+
+    func testOnLabel() {
+        let l = UILabel()
+        let v = UIView()
+        let autolayout = l.northLayoutFormat([:], ["v": v])
+        autolayout("H:|[v]|")
+
+        XCTAssertTrue(v.isDescendantOfView(l))
+        XCTAssertFalse(v.translatesAutoresizingMaskIntoConstraints)
+    }
 }
