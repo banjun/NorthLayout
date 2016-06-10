@@ -10,7 +10,7 @@ import UIKit
 import NorthLayout
 
 
-private func colorImage(color: UIColor) -> UIImage {
+private func colorImage(_ color: UIColor) -> UIImage {
     UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
     color.set()
     UIRectFill(CGRect(x: 0, y: 0, width: 1, height: 1))
@@ -23,11 +23,10 @@ private func colorImage(color: UIColor) -> UIImage {
 class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
-        
-        edgesForExtendedLayout = []
+
         view.backgroundColor = .white()
-        
-        let iconView = UIImageView(image: colorImage(color: UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
+
+        let iconView = UIImageView(image: colorImage(UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
         let iconWidth = CGFloat(32)
         iconView.layer.cornerRadius = iconWidth / 2
         iconView.clipsToBounds = true
@@ -57,7 +56,7 @@ class ViewController: UIViewController {
         replyButton.layer.cornerRadius = 4
         replyButton.clipsToBounds = true
         
-        let autolayout = view.northLayoutFormat(["p": 8, "iconWidth": iconWidth], [
+        let autolayout = northLayoutFormat(["p": 8, "iconWidth": iconWidth], [
             "icon": iconView,
             "name": nameLabel,
             "date": dateLabel,
