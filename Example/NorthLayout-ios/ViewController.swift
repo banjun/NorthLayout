@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
 
-        view.backgroundColor = .white()
+        view.backgroundColor = .whiteColor()
 
         let iconView = UIImageView(image: colorImage(UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
         let iconWidth = CGFloat(32)

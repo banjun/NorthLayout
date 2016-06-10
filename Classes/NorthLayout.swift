@@ -45,8 +45,8 @@ extension View {
             let autolayout = view.northLayoutFormat(metrics, vs, options: options)
             return { (format: String) in
                 autolayout(!format.hasPrefix("V:") ? format : format
-                    .replacingOccurrences(of: "V:|", with: "V:[topLayoutGuide]")
-                    .replacingOccurrences(of: "|", with: "[bottomLayoutGuide]"))
+                    .stringByReplacingOccurrencesOfString("V:|", withString: "V:[topLayoutGuide]")
+                    .stringByReplacingOccurrencesOfString("|", withString: "[bottomLayoutGuide]"))
             }
         }
     }
