@@ -7,24 +7,20 @@
 //
 
 #if os(iOS)
-    import UIKit
-    public typealias UXView = UIView
-    #else
-    import AppKit
-    public typealias UXView = NSView
+    import class UIKit.UIView
+    typealias View = UIView
+#else
+    import class AppKit.NSView
+    typealias View = NSView
 #endif
 
 
-public extension UXView {
-    public func northLayoutFormat(_ metrics: [String:CGFloat], _ views: [String:UXView]) -> (String) -> Void {
-        return self.northLayoutFormat(metrics, views, options: [])
-    }
-    
-    public func northLayoutFormat(_ metrics: [String:CGFloat], _ views: [String:UXView], options: NSLayoutFormatOptions) -> (String) -> Void {
-        for v in views.values {
+extension View {
+    public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutFormatOptions = []) -> (String) -> Void {
+        for case let v as View in views.values {
             if !v.isDescendant(of: self) {
                 v.translatesAutoresizingMaskIntoConstraints = false
-                self.addSubview(v)
+                addSubview(v)
             }
         }
         return { (format: String) in

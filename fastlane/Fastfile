@@ -1,0 +1,26 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.92.0"
+
+default_platform :ios
+
+platform :ios do
+  desc "Runs all the tests"
+  lane :test do
+    scan(scheme: 'NorthLayout-ios')
+    scan(scheme: 'NorthLayout-osx')
+  end
+
+end
+
