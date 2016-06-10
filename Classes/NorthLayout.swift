@@ -39,6 +39,11 @@ extension View {
     extension UIViewController {
         /// autolayout by replacing vertical edges `|`...`|` to `topLayoutGuide` and `bottomLayoutGuide`
         public func northLayoutFormat(metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutFormatOptions = []) -> (String) -> Void {
+            guard view.enclosingScrollView == nil else {
+                // fallback to the view.northLayoutFormat because UIScrollView.contentSize is measured by its layout but not by the layout guides of this view controller
+                return view.northLayoutFormat(metrics, views, options: options)
+            }
+
             var vs = views
             vs["topLayoutGuide"] = topLayoutGuide
             vs["bottomLayoutGuide"] = bottomLayoutGuide
@@ -48,6 +53,14 @@ extension View {
                     .stringByReplacingOccurrencesOfString("V:|", withString: "V:[topLayoutGuide]")
                     .stringByReplacingOccurrencesOfString("|", withString: "[bottomLayoutGuide]"))
             }
+        }
+    }
+
+
+    extension View {
+        var enclosingScrollView: UIScrollView? {
+            guard let s = self as? UIScrollView else { return superview?.enclosingScrollView }
+            return s
         }
     }
 #endif
