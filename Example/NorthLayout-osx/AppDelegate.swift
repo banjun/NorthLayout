@@ -31,9 +31,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let autolayout = view.northLayoutFormat(["p": 8], [
             "name": nameLabel,
             "text": textLabel,
+            "L": MinView(),
+            "R": MinView(),
             ])
         autolayout("H:|-p-[name]-p-|")
-        autolayout("H:|-p-[text]-p-|")
+        autolayout("H:|-p-[L][text(<=320)][R(==L)]-p-|")
         autolayout("V:|-p-[name]-p-[text]")
     }
 

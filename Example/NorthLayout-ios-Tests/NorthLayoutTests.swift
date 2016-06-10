@@ -11,13 +11,20 @@ import XCTest
 import NorthLayout
 
 class NorthLayoutTests: XCTestCase {
-    let rootView: UIView = {
-        let window = UIWindow(frame: CGRectMake(0, 0, 320, 480))
-        let v = UIView(frame: window.bounds)
+    let window = UIWindow(frame: CGRectMake(0, 0, 320, 480))
+    lazy var rootView: UIView = {
+        let v = UIView(frame: self.window.bounds)
         v.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        window.addSubview(v)
+        self.window.addSubview(v)
         return v
         }()
+
+    override func setUp() {
+        for sv in rootView.subviews {
+            sv.removeFromSuperview()
+        }
+        window.frame = CGRect(x: 0, y: 0, width: 320, height: 480)
+    }
     
     func test() {
         let label = UILabel()
@@ -53,5 +60,28 @@ class NorthLayoutTests: XCTestCase {
 
         XCTAssertTrue(v.isDescendantOfView(l))
         XCTAssertFalse(v.translatesAutoresizingMaskIntoConstraints)
+    }
+
+    func testMinView() {
+        let l = UILabel()
+        l.text = "label"
+
+        let autolayout = rootView.northLayoutFormat([:], [
+            "label": l,
+            "L": MinView(),
+            "R": MinView(),
+            ])
+        autolayout("H:|[L][label(<=320)][R(==L)]|")
+        autolayout("V:|[label]|")
+
+        window.frame = CGRect(x: 0, y: 0, width: 160, height: 480)
+        rootView.layoutIfNeeded()
+        XCTAssertEqual(l.frame.origin.x, 0)
+        XCTAssertEqual(l.frame.width, 160)
+
+        window.frame = CGRect(x: 0, y: 0, width: 640, height: 480)
+        rootView.layoutIfNeeded()
+        XCTAssertEqual(l.frame.origin.x, 160)
+        XCTAssertEqual(l.frame.width, 320)
     }
 }
