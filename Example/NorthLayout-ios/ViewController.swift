@@ -23,10 +23,9 @@ private func colorImage(color: UIColor) -> UIImage {
 class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
-        
-        edgesForExtendedLayout = .None
-        view.backgroundColor = UIColor.whiteColor()
-        
+
+        view.backgroundColor = .white()
+
         let iconView = UIImageView(image: colorImage(UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
         let iconWidth = CGFloat(32)
         iconView.layer.cornerRadius = iconWidth / 2
@@ -57,7 +56,7 @@ class ViewController: UIViewController {
         replyButton.layer.cornerRadius = 4
         replyButton.clipsToBounds = true
         
-        let autolayout = view.northLayoutFormat(["p": 8, "iconWidth": iconWidth], [
+        let autolayout = northLayoutFormat(["p": 8, "iconWidth": iconWidth], [
             "icon": iconView,
             "name": nameLabel,
             "date": dateLabel,
