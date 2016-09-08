@@ -1,5 +1,5 @@
 PODS:
-  - NorthLayout (2.0.0)
+  - NorthLayout (2.2.0)
 
 DEPENDENCIES:
   - NorthLayout (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  NorthLayout: cb23c00efe2b10f3d2b80c2094fa46b7f11e89e2
+  NorthLayout: 4427249c187b7cb82d3986b313390558ce804fc7
 
 PODFILE CHECKSUM: 57a29a26ac3b5df8b000e8ea1b7c74f83d3ac679
 

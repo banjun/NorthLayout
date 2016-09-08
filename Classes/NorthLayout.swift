@@ -19,7 +19,7 @@
             setup()
         }
         public required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-        public override func intrinsicContentSize() -> CGSize {return .zero}
+        public override var intrinsicContentSize : CGSize {return .zero}
     }
 
 #else
@@ -29,11 +29,11 @@
     typealias LayoutPriority = NSLayoutPriority
     typealias LayoutAxis = NSLayoutConstraintOrientation
     extension View: LayoutPrioritizable {
-        func setContentCompressionResistancePriority(priority: LayoutPriority, forAxis axis: LayoutAxis) {
-            setContentCompressionResistancePriority(priority, forOrientation: axis)
+        func setContentCompressionResistancePriority(_ priority: LayoutPriority, forAxis axis: LayoutAxis) {
+            setContentCompressionResistancePriority(priority, for: axis)
         }
-        func setContentHuggingPriority(priority: LayoutPriority, forAxis axis: LayoutAxis) {
-            setContentHuggingPriority(priority, forOrientation: axis)
+        func setContentHuggingPriority(_ priority: LayoutPriority, forAxis axis: LayoutAxis) {
+            setContentHuggingPriority(priority, for: axis)
         }
     }
 
@@ -58,7 +58,7 @@ extension View {
             }
         }
         return { (format: String) in
-            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: metrics, views: views))
+            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: metrics as [String : NSNumber]?, views: views))
         }
     }
 }
@@ -79,8 +79,8 @@ extension View {
             let autolayout = view.northLayoutFormat(metrics, vs, options: options)
             return { (format: String) in
                 autolayout(!format.hasPrefix("V:") ? format : format
-                    .stringByReplacingOccurrencesOfString("V:|", withString: "V:[topLayoutGuide]")
-                    .stringByReplacingOccurrencesOfString("|", withString: "[bottomLayoutGuide]"))
+                    .replacingOccurrences(of: "V:|", with: "V:[topLayoutGuide]")
+                    .replacingOccurrences(of: "|", with: "[bottomLayoutGuide]"))
             }
         }
     }
@@ -96,8 +96,8 @@ extension View {
 
 
 protocol LayoutPrioritizable {
-    func setContentCompressionResistancePriority(priority: LayoutPriority, forAxis axis: LayoutAxis)
-    func setContentHuggingPriority(priority: LayoutPriority, forAxis axis: LayoutAxis)
+    func setContentCompressionResistancePriority(_ priority: LayoutPriority, forAxis axis: LayoutAxis)
+    func setContentHuggingPriority(_ priority: LayoutPriority, forAxis axis: LayoutAxis)
 }
 
 
@@ -116,9 +116,9 @@ protocol MinLayoutable: LayoutPrioritizable {
 }
 extension MinLayoutable {
     func setup() {
-        setContentCompressionResistancePriority(LayoutPriority.fittingSize, forAxis: .Horizontal)
-        setContentCompressionResistancePriority(LayoutPriority.fittingSize, forAxis: .Vertical)
-        setContentHuggingPriority(LayoutPriority.fitInWindow, forAxis: .Horizontal)
-        setContentHuggingPriority(LayoutPriority.fitInWindow, forAxis: .Vertical)
+        setContentCompressionResistancePriority(LayoutPriority.fittingSize, forAxis: .horizontal)
+        setContentCompressionResistancePriority(LayoutPriority.fittingSize, forAxis: .vertical)
+        setContentHuggingPriority(LayoutPriority.fitInWindow, forAxis: .horizontal)
+        setContentHuggingPriority(LayoutPriority.fitInWindow, forAxis: .vertical)
     }
 }

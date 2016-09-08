@@ -15,17 +15,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
 
-    func applicationDidFinishLaunching(_ notification: NSNotification) {
+    func applicationDidFinishLaunching(_ notification: Notification) {
         // Insert code here to initialize your application
         let view = window.contentView!
         
         let nameLabel = NSTextField()
         nameLabel.stringValue = "Name"
-        nameLabel.backgroundColor = .gray()
+        nameLabel.backgroundColor = .gray
         
         let textLabel = NSTextField()
         textLabel.stringValue = "Some text label"
-        textLabel.backgroundColor = .lightGray()
+        textLabel.backgroundColor = .lightGray
         
         let autolayout = view.northLayoutFormat(["p": 8], [
             "name": nameLabel,
@@ -37,11 +37,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         autolayout("H:|-p-[L][text(<=320)][R(==L)]-p-|")
         autolayout("V:|-p-[name]-p-[text]")
     }
-
-    func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
-    }
-
-
 }
 

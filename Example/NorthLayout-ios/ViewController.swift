@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
 
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = .white
 
         let iconView = UIImageView(image: colorImage(UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
         let iconWidth = CGFloat(32)
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         let dateLabel = UILabel()
         dateLabel.text = "1 min ago"
         dateLabel.font = UIFont.systemFont(ofSize: 12)
-        dateLabel.textColor = .lightGray()
+        dateLabel.textColor = .lightGray
         
         let textLabel = UILabel()
         textLabel.text = "Some text go here"
@@ -45,14 +45,14 @@ class ViewController: UIViewController {
         let favButton = UIButton(type: .system)
         favButton.setTitle("⭐️", for: [])
         favButton.backgroundColor = UIColor(red: 0.17, green: 0.29, blue: 0.45, alpha: 1.0)
-        favButton.setTitleColor(.white(), for: [])
+        favButton.setTitleColor(.white, for: [])
         favButton.layer.cornerRadius = 4
         favButton.clipsToBounds = true
         
         let replyButton = UIButton(type: .system)
         replyButton.setTitle("Reply", for: [])
         replyButton.backgroundColor = favButton.backgroundColor
-        replyButton.setTitleColor(.white(), for: [])
+        replyButton.setTitleColor(.white, for: [])
         replyButton.layer.cornerRadius = 4
         replyButton.clipsToBounds = true
         

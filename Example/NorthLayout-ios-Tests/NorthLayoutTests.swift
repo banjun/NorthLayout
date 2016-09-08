@@ -11,11 +11,11 @@ import XCTest
 import NorthLayout
 
 class NorthLayoutTests: XCTestCase {
+    let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 320, height: 480))
     lazy var rootView: UIView = {
-        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 320, height: 480))
-        let v = UIView(frame: window.bounds)
+        let v = UIView(frame: self.window.bounds)
         v.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        window.addSubview(v)
+        self.window.addSubview(v)
         return v
         }()
 
