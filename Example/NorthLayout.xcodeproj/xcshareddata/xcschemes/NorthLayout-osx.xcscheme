@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2AB0A3ACF2276DBC028E00F"
+               BlueprintIdentifier = "C7EC8D710B29192E720F4782A2B76E09"
                BuildableName = "Pods_NorthLayout_osx.framework"
                BlueprintName = "Pods-NorthLayout-osx"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
