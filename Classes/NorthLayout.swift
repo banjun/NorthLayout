@@ -11,6 +11,7 @@
     typealias Size = CGSize
     typealias LayoutPriority = UILayoutPriority
     typealias LayoutAxis = UILayoutConstraintAxis
+    public typealias FormatOptions = NSLayoutFormatOptions
     extension View: LayoutPrioritizable {}
 
     public final class MinView: UIView, MinLayoutable {
@@ -26,8 +27,9 @@
     import class AppKit.NSView
     typealias View = NSView
     typealias Size = NSSize
-    typealias LayoutPriority = NSLayoutPriority
-    typealias LayoutAxis = NSLayoutConstraintOrientation
+    typealias LayoutPriority = NSLayoutConstraint.Priority
+    typealias LayoutAxis = NSLayoutConstraint.Orientation
+    public typealias FormatOptions = NSLayoutConstraint.FormatOptions
     extension View: LayoutPrioritizable {
         func setContentCompressionResistancePriority(_ priority: LayoutPriority, forAxis axis: LayoutAxis) {
             setContentCompressionResistancePriority(priority, for: axis)
@@ -47,10 +49,9 @@
     }
 #endif
 
-
 extension View {
     /// autolayout with enabling autolayout for subviews as side effects
-    public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutFormatOptions = []) -> (String) -> Void {
+    public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: FormatOptions = []) -> (String) -> Void {
         for case let v as View in views.values {
             if !v.isDescendant(of: self) {
                 v.translatesAutoresizingMaskIntoConstraints = false
@@ -102,11 +103,8 @@ protocol LayoutPrioritizable {
 
 
 extension LayoutPriority {
-    static var required: LayoutPriority = 1000
-    static var high: LayoutPriority = 750
-    static var fitInWindow: LayoutPriority = 500 - 1 // = NSLayoutPriorityWindowSizeStayPut - 1
-    static var low: LayoutPriority = 250
-    static var fittingSize: LayoutPriority = 50
+    static var fitInWindow: LayoutPriority = LayoutPriority(500 - 1) // = NSLayoutPriorityWindowSizeStayPut - 1
+    static var fittingSize: LayoutPriority = LayoutPriority(50)
 }
 
 
