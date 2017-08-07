@@ -97,8 +97,8 @@ extension View {
 
 
 protocol LayoutPrioritizable {
-    func setContentCompressionResistancePriority(_ priority: LayoutPriority, forAxis axis: LayoutAxis)
-    func setContentHuggingPriority(_ priority: LayoutPriority, forAxis axis: LayoutAxis)
+    func setContentCompressionResistancePriority(_ priority: LayoutPriority, for axis: LayoutAxis)
+    func setContentHuggingPriority(_ priority: LayoutPriority, for axis: LayoutAxis)
 }
 
 
@@ -114,9 +114,9 @@ protocol MinLayoutable: LayoutPrioritizable {
 }
 extension MinLayoutable {
     func setup() {
-        setContentCompressionResistancePriority(LayoutPriority.fittingSize, forAxis: .horizontal)
-        setContentCompressionResistancePriority(LayoutPriority.fittingSize, forAxis: .vertical)
-        setContentHuggingPriority(LayoutPriority.fitInWindow, forAxis: .horizontal)
-        setContentHuggingPriority(LayoutPriority.fitInWindow, forAxis: .vertical)
+        setContentCompressionResistancePriority(LayoutPriority.fittingSize, for: .horizontal)
+        setContentCompressionResistancePriority(LayoutPriority.fittingSize, for: .vertical)
+        setContentHuggingPriority(LayoutPriority.fitInWindow, for: .horizontal)
+        setContentHuggingPriority(LayoutPriority.fitInWindow, for: .vertical)
     }
 }
