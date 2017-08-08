@@ -30,14 +30,6 @@
     typealias LayoutPriority = NSLayoutConstraint.Priority
     typealias LayoutAxis = NSLayoutConstraint.Orientation
     public typealias FormatOptions = NSLayoutConstraint.FormatOptions
-    extension View: LayoutPrioritizable {
-        func setContentCompressionResistancePriority(_ priority: LayoutPriority, forAxis axis: LayoutAxis) {
-            setContentCompressionResistancePriority(priority, for: axis)
-        }
-        func setContentHuggingPriority(_ priority: LayoutPriority, forAxis axis: LayoutAxis) {
-            setContentHuggingPriority(priority, for: axis)
-        }
-    }
 
     public final class MinView: NSView, MinLayoutable {
         public init() {
@@ -114,9 +106,9 @@ protocol MinLayoutable: LayoutPrioritizable {
 }
 extension MinLayoutable {
     func setup() {
-        setContentCompressionResistancePriority(LayoutPriority.fittingSize, for: .horizontal)
-        setContentCompressionResistancePriority(LayoutPriority.fittingSize, for: .vertical)
-        setContentHuggingPriority(LayoutPriority.fitInWindow, for: .horizontal)
-        setContentHuggingPriority(LayoutPriority.fitInWindow, for: .vertical)
+        setContentCompressionResistancePriority(.fittingSize, for: .horizontal)
+        setContentCompressionResistancePriority(.fittingSize, for: .vertical)
+        setContentHuggingPriority(.fitInWindow, for: .horizontal)
+        setContentHuggingPriority(.fitInWindow, for: .vertical)
     }
 }
