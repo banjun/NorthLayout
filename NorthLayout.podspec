@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "NorthLayout"
-  s.version          = "4.0.0-beta.1"
+  s.version          = "4.0.0-beta.2"
   s.summary          = "Autolayout Visual Format Helper"
   s.description      = <<-DESC
                        fast path to autolayout using the Visual Format like `autolayout("H:|-[label]-|")`
