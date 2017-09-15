@@ -149,10 +149,10 @@ extension View {
                     }
                 }
 
-                if let left = edgeConstraints(pattern: "^(H:)?(?<removed>\\|(?<connection>|-(?<predicateList>[_0-9a-zA-Z(><=,@)]+)-|-))\\[(?<view>[_0-9a-zA-Z]+)") {
+                if let left = edgeConstraints(pattern: "^(H:|)(?<removed>\\|(?<connection>|-(?<predicateList>[_0-9a-zA-Z(><=,@)]+)-|-))\\[(?<view>[_0-9a-zA-Z]+)") {
                     left.constraint(left.view.leftAnchor, safeAreaLayoutGuide.leftAnchor).forEach {$0.isActive = true}
                 }
-                if let right = edgeConstraints(pattern: "^(H:)?.*\\[(?<view>[_0-9a-zA-Z]+).*\\](?<removed>(?<connection>|-(?<predicateList>[_0-9a-zA-Z(><=,@)]+)-|-)\\|)$") {
+                if let right = edgeConstraints(pattern: "^(H:|)[^:]*\\[(?<view>[_0-9a-zA-Z]+).*\\](?<removed>(?<connection>|-(?<predicateList>[_0-9a-zA-Z(><=,@)]+)-|-)\\|)$") {
                     right.constraint(safeAreaLayoutGuide.rightAnchor, right.view.rightAnchor).forEach {$0.isActive = true}
                 }
 
