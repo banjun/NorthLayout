@@ -1,8 +1,9 @@
 use_frameworks!
 
 target 'NorthLayout-ios' do
-  platform :ios, '8.0'
+  platform :ios, '9.0'
   pod 'NorthLayout', :path => '../'
+  pod 'FootlessParser', git: 'https://github.com/banjun/FootlessParser', branch: 'podspec-ios'
 
   target 'NorthLayout-ios-Tests' do
     inherit! :search_paths
@@ -10,7 +11,7 @@ target 'NorthLayout-ios' do
 end
 
 target 'NorthLayout-osx' do
-  platform :osx, '10.10'
+  platform :osx, '10.11'
   pod 'NorthLayout', :path => '../'
 end
 
