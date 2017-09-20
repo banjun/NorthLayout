@@ -4,25 +4,25 @@ PODS:
     - FootlessParser
 
 DEPENDENCIES:
-  - FootlessParser (from `https://github.com/banjun/FootlessParser`, branch `podspec-ios`)
+  - FootlessParser (from `https://github.com/banjun/FootlessParser`, branch `banjun`)
   - NorthLayout (from `../`)
 
 EXTERNAL SOURCES:
   FootlessParser:
-    :branch: podspec-ios
+    :branch: banjun
     :git: https://github.com/banjun/FootlessParser
   NorthLayout:
     :path: ../
 
 CHECKOUT OPTIONS:
   FootlessParser:
-    :commit: 3d942f98fda317fcc539acba29c3ae90fe9dc328
+    :commit: ddc7a4303a9796ef779af19885b263676ccdcb87
     :git: https://github.com/banjun/FootlessParser
 
 SPEC CHECKSUMS:
   FootlessParser: 4440fecaae31b3cf835fabfec0dd5b645e8ce7dc
   NorthLayout: 204fce9b41746034f0882a20b903947f18ccd81f
 
-PODFILE CHECKSUM: 96fbaa22d825064c745650950fc1e8895737884b
+PODFILE CHECKSUM: 762ee3d4afb10a3b3eb0f24bee83dade5a78465a
 
 COCOAPODS: 1.3.1
