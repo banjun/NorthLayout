@@ -60,7 +60,8 @@ extension View {
 #if os(iOS)
     extension UIViewController {
         /// autolayout by replacing vertical edges `|`...`|` to `topLayoutGuide` and `bottomLayoutGuide`
-        public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutFormatOptions = []) -> (String) -> Void {
+        public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutFormatOptions = [], useSafeArea: Bool = true) -> (String) -> Void {
+            guard let view = view else { fatalError() }
             guard view.enclosingScrollView == nil else {
                 // fallback to the view.northLayoutFormat because UIScrollView.contentSize is measured by its layout but not by the layout guides of this view controller
                 return view.northLayoutFormat(metrics, views, options: options)
@@ -70,14 +71,29 @@ extension View {
             vs["topLayoutGuide"] = topLayoutGuide
             vs["bottomLayoutGuide"] = bottomLayoutGuide
             let autolayout = view.northLayoutFormat(metrics, vs, options: options)
-            return { (format: String) in
+            let autolayoutWithVerticalGuides: (String) -> Void = { format in
                 autolayout(!format.hasPrefix("V:") ? format : format
                     .replacingOccurrences(of: "V:|", with: "V:[topLayoutGuide]")
                     .replacingOccurrences(of: "|", with: "[bottomLayoutGuide]"))
             }
+
+            guard #available(iOS 11, tvOS 11, *), useSafeArea else { return autolayoutWithVerticalGuides }
+            let safeAreaLayoutGuide = view.safeAreaLayoutGuide
+
+            return { (format: String) in
+                let edgeDecomposed = try? VFL(format: format).edgeDecomposed(format: format)
+                autolayoutWithVerticalGuides(edgeDecomposed?.middle ?? format)
+
+                if let leftConnection = edgeDecomposed?.first, let leftView = views[leftConnection.1.name] {
+                    leftConnection.0.predicateList.constraints(lhs: leftView.leftAnchor, rhs: safeAreaLayoutGuide.leftAnchor, metrics: metrics)
+                }
+
+                if let rightConnection = edgeDecomposed?.last, let rightView = views[rightConnection.1.name] {
+                    rightConnection.0.predicateList.constraints(lhs: safeAreaLayoutGuide.rightAnchor, rhs: rightView.rightAnchor, metrics: metrics)
+                }
+            }
         }
     }
-
 
     extension View {
         var enclosingScrollView: UIScrollView? {

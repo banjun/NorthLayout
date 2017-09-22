@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         dateLabel.text = "1 min ago"
         dateLabel.font = UIFont.systemFont(ofSize: 12)
         dateLabel.textColor = .lightGray
+        dateLabel.textAlignment = .right
         
         let textLabel = UILabel()
         textLabel.text = "Some text go here"
