@@ -3,7 +3,6 @@ use_frameworks!
 target 'NorthLayout-ios' do
   platform :ios, '9.0'
   pod 'NorthLayout', :path => '../'
-  pod 'FootlessParser', git: 'https://github.com/kareman/FootlessParser', branch: 'master'
 
   target 'NorthLayout-ios-Tests' do
     inherit! :search_paths
