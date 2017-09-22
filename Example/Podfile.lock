@@ -1,28 +1,28 @@
 PODS:
-  - FootlessParser (0.3.1)
+  - FootlessParser (0.4)
   - NorthLayout (4.0.0-beta.2):
-    - FootlessParser
+    - FootlessParser (~> 0.4)
 
 DEPENDENCIES:
-  - FootlessParser (from `https://github.com/banjun/FootlessParser`, branch `banjun`)
+  - FootlessParser (from `https://github.com/kareman/FootlessParser`, branch `master`)
   - NorthLayout (from `../`)
 
 EXTERNAL SOURCES:
   FootlessParser:
-    :branch: banjun
-    :git: https://github.com/banjun/FootlessParser
+    :branch: master
+    :git: https://github.com/kareman/FootlessParser
   NorthLayout:
     :path: ../
 
 CHECKOUT OPTIONS:
   FootlessParser:
-    :commit: ddc7a4303a9796ef779af19885b263676ccdcb87
-    :git: https://github.com/banjun/FootlessParser
+    :commit: a335a594c5b6fe5a92a811d6232b43b613629d88
+    :git: https://github.com/kareman/FootlessParser
 
 SPEC CHECKSUMS:
-  FootlessParser: 4440fecaae31b3cf835fabfec0dd5b645e8ce7dc
-  NorthLayout: 204fce9b41746034f0882a20b903947f18ccd81f
+  FootlessParser: e65f3668f25df971146a45cc93090dbf72ac7f96
+  NorthLayout: 933062aa11f6a12ac790cdf92a29abf5f96a46ce
 
-PODFILE CHECKSUM: 762ee3d4afb10a3b3eb0f24bee83dade5a78465a
+PODFILE CHECKSUM: 32bde7712022617ff02965923a85759fc70802ad
 
 COCOAPODS: 1.3.1

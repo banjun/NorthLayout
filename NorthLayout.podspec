@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   s.ios.frameworks = 'UIKit'
   s.osx.frameworks = 'AppKit'
   s.requires_arc = true
-  s.dependency 'FootlessParser'
+  s.dependency 'FootlessParser', '~> 0.4'
 end
