@@ -56,8 +56,12 @@ class ViewController: UIViewController {
         replyButton.setTitleColor(.white, for: [])
         replyButton.layer.cornerRadius = 4
         replyButton.clipsToBounds = true
-        
+
+        let headerView = HeaderView()
+
+        // example for View Controller level autolayout with respecting safe area layout guides
         let autolayout = northLayoutFormat(["p": 8, "iconWidth": iconWidth], [
+            "header": headerView,
             "icon": iconView,
             "name": nameLabel,
             "date": dateLabel,
@@ -68,11 +72,86 @@ class ViewController: UIViewController {
         autolayout("H:|-p-[icon(==iconWidth)]-p-[name]-p-[date]-p-|")
         autolayout("H:|-p-[text]-p-|")
         autolayout("H:|-p-[fav]-p-[reply(==fav)]-p-|")
-        autolayout("V:|-p-[icon(==iconWidth)]-p-[text]")
-        autolayout("V:|-p-[name(==icon)]")
-        autolayout("V:|-p-[date]")
+        autolayout("V:[header]-p-[icon(==iconWidth)]-p-[text]")
+        autolayout("V:[header]-p-[name(==icon)]")
+        autolayout("V:[header]-p-[date]")
         autolayout("V:[text]-p-[fav]")
         autolayout("V:[text]-p-[reply]")
+
+        let nonSafeAreaAutolayout = northLayoutFormat([:], ["header": headerView], useSafeArea: false)
+        nonSafeAreaAutolayout("H:|[header]|")
+        nonSafeAreaAutolayout("V:|[header(>=64)]")
+
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
+}
+
+// Example for view level autolayout with respecting safe area layout guides
+final class HeaderView: UIView {
+    let leftColumn: UIView = {
+        let v = MinView() // non -1 intrinsic size for compact layout
+        v.backgroundColor = .darkGray
+        return v
+    }()
+    let rightColumn: UIView = {
+        let v = MinView() // non -1 intrinsic size for compact layout
+        v.backgroundColor = .lightGray
+        return v
+    }()
+
+    let iconView: UIView = {
+        let v = UIView(frame: .zero)
+        v.backgroundColor = UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)
+        v.clipsToBounds = true
+        v.layer.cornerRadius = 32
+        return v
+    }()
+    let nameLabel: UILabel = {
+        let l = UILabel(frame: .zero)
+        l.text = "@screenname" // @"s" // for short
+        l.textColor = .white
+        l.textAlignment = .center
+        return l
+    }()
+    let bioLabel: UILabel = {
+        let l = UILabel(frame: .zero)
+        l.text = "some text"
+        l.textColor = .black
+        l.backgroundColor = .white
+        l.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+        return l
+    }()
+
+    init() {
+        super.init(frame: .zero)
+
+        let autolayout = northLayoutFormat([:], ["left": leftColumn, "right": rightColumn])
+        autolayout("H:|[left][right]|")
+        autolayout("V:|[left]|")
+        autolayout("V:|[right]|")
+        rightColumn.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+
+        let leftLayout = leftColumn.northLayoutFormat(["p": 8], [
+            "icon": iconView,
+            "name": nameLabel])
+        leftLayout("H:[icon(==64)]")
+        leftLayout("V:|-p-[icon(==64)]-p-[name]-p-|")
+        leftColumn.layoutMarginsGuide.leftAnchor.constraint(lessThanOrEqualTo: iconView.leftAnchor).isActive = true
+        leftColumn.layoutMarginsGuide.rightAnchor.constraint(greaterThanOrEqualTo: iconView.rightAnchor).isActive = true
+        leftColumn.layoutMarginsGuide.centerXAnchor.constraint(equalTo: iconView.centerXAnchor).isActive = true
+
+        leftColumn.layoutMarginsGuide.leftAnchor.constraint(lessThanOrEqualTo: nameLabel.leftAnchor).isActive = true
+        leftColumn.layoutMarginsGuide.rightAnchor.constraint(greaterThanOrEqualTo: nameLabel.rightAnchor).isActive = true
+        leftColumn.layoutMarginsGuide.centerXAnchor.constraint(equalTo: nameLabel.centerXAnchor).isActive = true
+
+        let rightLayout = rightColumn.northLayoutFormat(["p": 8], [
+            "bio": bioLabel])
+        rightLayout("V:|-p-[bio]-(>=p)-|")
+        rightColumn.layoutMarginsGuide.leftAnchor.constraint(equalTo: bioLabel.leftAnchor).isActive = true
+        rightColumn.layoutMarginsGuide.rightAnchor.constraint(equalTo: bioLabel.rightAnchor).isActive = true
+
+        setContentHuggingPriority(.required, for: .vertical)
+    }
+    required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder)}
 }
 

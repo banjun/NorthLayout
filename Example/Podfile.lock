@@ -1,6 +1,6 @@
 PODS:
   - FootlessParser (0.4)
-  - NorthLayout (4.0.0-beta.3):
+  - NorthLayout (4.0.0):
     - FootlessParser (~> 0.4)
 
 DEPENDENCIES:
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FootlessParser: 17af528d685057d7a48c3231bbe0a7babb163775
-  NorthLayout: 01e37e9357d0a17a422ddd68c6531d00c61e7f9a
+  NorthLayout: 50c3d3af52e55d39dcf9cfdd28218f9a550f5db1
 
 PODFILE CHECKSUM: 6567cbb1359df4e786c293632327df35bca886b8
 
