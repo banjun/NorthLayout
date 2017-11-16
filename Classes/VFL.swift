@@ -2,13 +2,13 @@ import Foundation
 
 extension VFL {
     /// decompose visual format into both side of edge connections and a middle remainder format string
-    func edgeDecomposed(format: String) throws -> (first: (Connection, VFL.View)?, middle: String, last: (Connection, VFL.View)?) {
+    func edgeDecomposed(format: String) throws -> (first: (Bound, Connection, VFL.View)?, middle: String, last: (VFL.View, Connection, Bound)?) {
         var middle = format
         let vfl = try VFL(format: format)
         guard case .h = vfl.orientation else { return (nil, format, nil) } // only support horizontals
 
-        let first = vfl.firstBound.map {($0, vfl.firstView)}
-        let last = vfl.lastBound.map {($0, vfl.lastView)}
+        let first = vfl.firstBound.map {($0.0, $0.1, vfl.firstView)}
+        let last = vfl.lastBound.map {(vfl.lastView, $0.0, $0.1)}
 
         // strip decomposed edge connections
         // we do not generate a format string from parsed VFL, for some reliability

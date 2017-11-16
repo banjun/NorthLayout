@@ -77,19 +77,28 @@ extension View {
                     .replacingOccurrences(of: "|", with: "[bottomLayoutGuide]"))
             }
 
-            guard #available(iOS 11, tvOS 11, *), useSafeArea else { return autolayoutWithVerticalGuides }
-            let safeAreaLayoutGuide = view.safeAreaLayoutGuide
-
             return { (format: String) in
                 let edgeDecomposed = try? VFL(format: format).edgeDecomposed(format: format)
                 autolayoutWithVerticalGuides(edgeDecomposed?.middle ?? format)
 
-                if let leftConnection = edgeDecomposed?.first, let leftView = views[leftConnection.1.name] {
-                    leftConnection.0.predicateList.constraints(lhs: leftView.leftAnchor, rhs: safeAreaLayoutGuide.leftAnchor, metrics: metrics)
+                if let leftConnection = edgeDecomposed?.first, let leftView = views[leftConnection.2.name] {
+                    let anchor: NSLayoutXAxisAnchor = {
+                        switch leftConnection.0 {
+                        case .superview: return view.leftAnchor
+                        case .layoutMrgin: return view.layoutMarginsGuide.leftAnchor
+                        }
+                    }()
+                    leftConnection.1.predicateList.constraints(lhs: leftView.leftAnchor, rhs:anchor, metrics: metrics)
                 }
 
-                if let rightConnection = edgeDecomposed?.last, let rightView = views[rightConnection.1.name] {
-                    rightConnection.0.predicateList.constraints(lhs: safeAreaLayoutGuide.rightAnchor, rhs: rightView.rightAnchor, metrics: metrics)
+                if let rightConnection = edgeDecomposed?.last, let rightView = views[rightConnection.0.name] {
+                    let anchor: NSLayoutXAxisAnchor = {
+                        switch rightConnection.2 {
+                        case .superview: return view.rightAnchor
+                        case .layoutMrgin: return view.layoutMarginsGuide.rightAnchor
+                        }
+                    }()
+                    rightConnection.1.predicateList.constraints(lhs: anchor, rhs: rightView.rightAnchor, metrics: metrics)
                 }
             }
         }

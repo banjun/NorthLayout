@@ -69,18 +69,16 @@ class ViewController: UIViewController {
             "fav": favButton,
             "reply": replyButton,
             ])
-        autolayout("H:|-p-[icon(==iconWidth)]-p-[name]-p-[date]-p-|")
-        autolayout("H:|-p-[text]-p-|")
-        autolayout("H:|-p-[fav]-p-[reply(==fav)]-p-|")
+        autolayout("H:|[header]|")
+        autolayout("V:|[header(>=64)]")
+        autolayout("H:||[icon(==iconWidth)]-p-[name]-p-[date]||")
+        autolayout("H:||[text]||")
+        autolayout("H:||[fav]-p-[reply(==fav)]||")
         autolayout("V:[header]-p-[icon(==iconWidth)]-p-[text]")
         autolayout("V:[header]-p-[name(==icon)]")
         autolayout("V:[header]-p-[date]")
         autolayout("V:[text]-p-[fav]")
         autolayout("V:[text]-p-[reply]")
-
-        let nonSafeAreaAutolayout = northLayoutFormat([:], ["header": headerView], useSafeArea: false)
-        nonSafeAreaAutolayout("H:|[header]|")
-        nonSafeAreaAutolayout("V:|[header(>=64)]")
 
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
