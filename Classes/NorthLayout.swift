@@ -51,7 +51,49 @@ extension View {
             }
         }
         return { (format: String) in
-            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: metrics as [String : NSNumber]?, views: views))
+            let edgeDecomposed = try? VFL(format: format).edgeDecomposed(format: format)
+            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: edgeDecomposed?.middle ?? format, options: options, metrics: metrics as [String : NSNumber]?, views: views))
+            if !format.hasPrefix("V:") {
+                if let leftConnection = edgeDecomposed?.first, let leftView = views[leftConnection.2.name] {
+                    let anchor: NSLayoutXAxisAnchor = {
+                        switch leftConnection.0 {
+                        case .superview: return self.leftAnchor
+                        case .layoutMrgin: return self.layoutMarginsGuide.leftAnchor
+                        }
+                    }()
+                    leftConnection.1.predicateList.constraints(lhs: leftView.leftAnchor, rhs:anchor, metrics: metrics)
+                }
+
+                if let rightConnection = edgeDecomposed?.last, let rightView = views[rightConnection.0.name] {
+                    let anchor: NSLayoutXAxisAnchor = {
+                        switch rightConnection.2 {
+                        case .superview: return self.rightAnchor
+                        case .layoutMrgin: return self.layoutMarginsGuide.rightAnchor
+                        }
+                    }()
+                    rightConnection.1.predicateList.constraints(lhs: anchor, rhs: rightView.rightAnchor, metrics: metrics)
+                }
+            } else {
+                if let leftConnection = edgeDecomposed?.first, let leftView = views[leftConnection.2.name] {
+                    let anchor: NSLayoutYAxisAnchor = {
+                        switch leftConnection.0 {
+                        case .superview: return self.topAnchor
+                        case .layoutMrgin: return self.layoutMarginsGuide.topAnchor
+                        }
+                    }()
+                    leftConnection.1.predicateList.constraints(lhs: leftView.topAnchor, rhs:anchor, metrics: metrics)
+                }
+
+                if let rightConnection = edgeDecomposed?.last, let rightView = views[rightConnection.0.name] {
+                    let anchor: NSLayoutYAxisAnchor = {
+                        switch rightConnection.2 {
+                        case .superview: return self.bottomAnchor
+                        case .layoutMrgin: return self.layoutMarginsGuide.bottomAnchor
+                        }
+                    }()
+                    rightConnection.1.predicateList.constraints(lhs: anchor, rhs: rightView.bottomAnchor, metrics: metrics)
+                }
+            }
         }
     }
 }
@@ -66,6 +108,8 @@ extension View {
                 // fallback to the view.northLayoutFormat because UIScrollView.contentSize is measured by its layout but not by the layout guides of this view controller
                 return view.northLayoutFormat(metrics, views, options: options)
             }
+
+            return view.northLayoutFormat(metrics, views, options: options)
 
             var vs = views
             vs["topLayoutGuide"] = topLayoutGuide

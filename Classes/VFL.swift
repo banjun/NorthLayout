@@ -5,7 +5,6 @@ extension VFL {
     func edgeDecomposed(format: String) throws -> (first: (Bound, Connection, VFL.View)?, middle: String, last: (VFL.View, Connection, Bound)?) {
         var middle = format
         let vfl = try VFL(format: format)
-        guard case .h = vfl.orientation else { return (nil, format, nil) } // only support horizontals
 
         let first = vfl.firstBound.map {($0.0, $0.1, vfl.firstView)}
         let last = vfl.lastBound.map {(vfl.lastView, $0.0, $0.1)}
@@ -13,14 +12,20 @@ extension VFL {
         // strip decomposed edge connections
         // we do not generate a format string from parsed VFL, for some reliability
         // instead, use a knowledge that first `[` and last `]` separate edge connections
-        if first != nil {
+//        if first != nil {
             middle = String(middle.drop {$0 != "["})
-        }
-        if last != nil {
+//        }
+//        if last != nil {
             middle = String(middle.reversed().drop {$0 != "]"}.reversed())
+//        }
+
+        let orientation: String
+        switch vfl.orientation {
+        case .h: orientation = "H:"
+        case .v: orientation = "V:"
         }
 
-        return (first, middle, last)
+        return (first, orientation + middle, last)
     }
 }
 
