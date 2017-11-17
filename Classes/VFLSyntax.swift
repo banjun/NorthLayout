@@ -20,7 +20,7 @@ struct VFL {
 
     enum Bound: String {
         case superview = "|"
-        case layoutMrgin = "||" // NOTE: custom VFL element introduced in NorthLayout. indicates bound is layoutMarginsGuide, including Safe Area + spacing
+        case layoutMargin = "||" // NOTE: custom VFL element introduced in NorthLayout. indicates bound is layoutMarginsGuide, including Safe Area + spacing
     }
 
     struct Connection {
@@ -126,7 +126,7 @@ extension VFL {
             <*> zeroOrMore(char(",") *> VFL.Predicate.parser) <* char(")")
         let predicateList: Parser<Character, VFL.PredicateList> = {.simplePredicate($0)} <^> simplePredicate
             <|> {.predicateListWithParens($0)} <^> predicateListWithParens
-        let bound: Parser<Character, VFL.Bound> = {_ in VFL.Bound.layoutMrgin} <^> string(VFL.Bound.layoutMrgin.rawValue)
+        let bound: Parser<Character, VFL.Bound> = {_ in VFL.Bound.layoutMargin} <^> string(VFL.Bound.layoutMargin.rawValue)
             <|> {_ in .superview} <^> string(VFL.Bound.superview.rawValue)
         let connection = (VFL.Connection.init) <^> (char("-") *> predicateList <* char("-")
             <|> {_ in VFL.PredicateList.simplePredicate(.positiveNumber(8))} <^> char("-")

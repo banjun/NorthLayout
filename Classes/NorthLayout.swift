@@ -58,7 +58,7 @@ extension View {
                     let anchor: NSLayoutXAxisAnchor = {
                         switch leftConnection.0 {
                         case .superview: return self.leftAnchor
-                        case .layoutMrgin: return self.layoutMarginsGuide.leftAnchor
+                        case .layoutMargin: return self.layoutMarginsGuide.leftAnchor
                         }
                     }()
                     leftConnection.1.predicateList.constraints(lhs: leftView.leftAnchor, rhs:anchor, metrics: metrics)
@@ -68,7 +68,7 @@ extension View {
                     let anchor: NSLayoutXAxisAnchor = {
                         switch rightConnection.2 {
                         case .superview: return self.rightAnchor
-                        case .layoutMrgin: return self.layoutMarginsGuide.rightAnchor
+                        case .layoutMargin: return self.layoutMarginsGuide.rightAnchor
                         }
                     }()
                     rightConnection.1.predicateList.constraints(lhs: anchor, rhs: rightView.rightAnchor, metrics: metrics)
@@ -78,7 +78,7 @@ extension View {
                     let anchor: NSLayoutYAxisAnchor = {
                         switch leftConnection.0 {
                         case .superview: return self.topAnchor
-                        case .layoutMrgin: return self.layoutMarginsGuide.topAnchor
+                        case .layoutMargin: return self.layoutMarginsGuide.topAnchor
                         }
                     }()
                     leftConnection.1.predicateList.constraints(lhs: leftView.topAnchor, rhs:anchor, metrics: metrics)
@@ -88,7 +88,7 @@ extension View {
                     let anchor: NSLayoutYAxisAnchor = {
                         switch rightConnection.2 {
                         case .superview: return self.bottomAnchor
-                        case .layoutMrgin: return self.layoutMarginsGuide.bottomAnchor
+                        case .layoutMargin: return self.layoutMarginsGuide.bottomAnchor
                         }
                     }()
                     rightConnection.1.predicateList.constraints(lhs: anchor, rhs: rightView.bottomAnchor, metrics: metrics)
@@ -129,7 +129,7 @@ extension View {
                     let anchor: NSLayoutXAxisAnchor = {
                         switch leftConnection.0 {
                         case .superview: return view.leftAnchor
-                        case .layoutMrgin: return view.layoutMarginsGuide.leftAnchor
+                        case .layoutMargin: return view.layoutMarginsGuide.leftAnchor
                         }
                     }()
                     leftConnection.1.predicateList.constraints(lhs: leftView.leftAnchor, rhs:anchor, metrics: metrics)
@@ -139,7 +139,7 @@ extension View {
                     let anchor: NSLayoutXAxisAnchor = {
                         switch rightConnection.2 {
                         case .superview: return view.rightAnchor
-                        case .layoutMrgin: return view.layoutMarginsGuide.rightAnchor
+                        case .layoutMargin: return view.layoutMarginsGuide.rightAnchor
                         }
                     }()
                     rightConnection.1.predicateList.constraints(lhs: anchor, rhs: rightView.rightAnchor, metrics: metrics)
