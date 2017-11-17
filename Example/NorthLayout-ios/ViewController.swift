@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         l.font = UIFont.systemFont(ofSize: 12)
         l.textColor = .lightGray
         l.textAlignment = .right
+        l.setContentHuggingPriority(.required, for: .horizontal)
         return l
     }()
 
@@ -98,6 +99,12 @@ class ViewController: UIViewController {
         autolayout("V:[header]-p-[date]")
         autolayout("V:[text]-p-[fav]")
         autolayout("V:[text]-p-[reply]")
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        NSLog("%@", "view.layoutMargins = \(view.layoutMargins)")
+        NSLog("%@", "view._autolayoutTrace = \(String(describing: view.value(forKey: "_autolayoutTrace")))")
     }
 
     @objc func nav() {
