@@ -11,6 +11,7 @@
     typealias Size = CGSize
     typealias LayoutPriority = UILayoutPriority
     typealias LayoutAxis = UILayoutConstraintAxis
+    typealias LayoutGuide = UILayoutGuide
     public typealias FormatOptions = NSLayoutFormatOptions
     extension View: LayoutPrioritizable {}
 
@@ -29,6 +30,7 @@
     typealias Size = NSSize
     typealias LayoutPriority = NSLayoutConstraint.Priority
     typealias LayoutAxis = NSLayoutConstraint.Orientation
+    typealias LayoutGuide = NSLayoutGuide
     public typealias FormatOptions = NSLayoutConstraint.FormatOptions
 
     public final class MinView: NSView, MinLayoutable {
@@ -55,43 +57,19 @@ extension View {
             self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: edgeDecomposed?.middle ?? format, options: options, metrics: metrics as [String : NSNumber]?, views: views))
             if !format.hasPrefix("V:") {
                 if let leftConnection = edgeDecomposed?.first, let leftView = views[leftConnection.2.name] {
-                    let anchor: NSLayoutXAxisAnchor = {
-                        switch leftConnection.0 {
-                        case .superview: return self.leftAnchor
-                        case .layoutMargin: return self.layoutMarginsGuide.leftAnchor
-                        }
-                    }()
-                    leftConnection.1.predicateList.constraints(lhs: leftView.leftAnchor, rhs:anchor, metrics: metrics)
+                    leftConnection.1.predicateList.constraints(lhs: leftView.leftAnchor, rhs: leftConnection.0.leftAnchor(for: self), metrics: metrics)
                 }
-
+                
                 if let rightConnection = edgeDecomposed?.last, let rightView = views[rightConnection.0.name] {
-                    let anchor: NSLayoutXAxisAnchor = {
-                        switch rightConnection.2 {
-                        case .superview: return self.rightAnchor
-                        case .layoutMargin: return self.layoutMarginsGuide.rightAnchor
-                        }
-                    }()
-                    rightConnection.1.predicateList.constraints(lhs: anchor, rhs: rightView.rightAnchor, metrics: metrics)
+                    rightConnection.1.predicateList.constraints(lhs: rightConnection.2.rightAnchor(for: self), rhs: rightView.rightAnchor, metrics: metrics)
                 }
             } else {
                 if let leftConnection = edgeDecomposed?.first, let leftView = views[leftConnection.2.name] {
-                    let anchor: NSLayoutYAxisAnchor = {
-                        switch leftConnection.0 {
-                        case .superview: return self.topAnchor
-                        case .layoutMargin: return self.layoutMarginsGuide.topAnchor
-                        }
-                    }()
-                    leftConnection.1.predicateList.constraints(lhs: leftView.topAnchor, rhs:anchor, metrics: metrics)
+                    leftConnection.1.predicateList.constraints(lhs: leftView.topAnchor, rhs: leftConnection.0.topAnchor(for: self), metrics: metrics)
                 }
-
+                
                 if let rightConnection = edgeDecomposed?.last, let rightView = views[rightConnection.0.name] {
-                    let anchor: NSLayoutYAxisAnchor = {
-                        switch rightConnection.2 {
-                        case .superview: return self.bottomAnchor
-                        case .layoutMargin: return self.layoutMarginsGuide.bottomAnchor
-                        }
-                    }()
-                    rightConnection.1.predicateList.constraints(lhs: anchor, rhs: rightView.bottomAnchor, metrics: metrics)
+                    rightConnection.1.predicateList.constraints(lhs: rightConnection.2.bottomAnchor(for: self), rhs: rightView.bottomAnchor, metrics: metrics)
                 }
             }
         }

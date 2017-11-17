@@ -87,3 +87,45 @@ extension VFL.PredicateList {
         return cs
     }
 }
+
+protocol Anchorable {
+    var leftAnchor: NSLayoutXAxisAnchor { get }
+    var rightAnchor: NSLayoutXAxisAnchor { get }
+    var topAnchor: NSLayoutYAxisAnchor { get }
+    var bottomAnchor: NSLayoutYAxisAnchor { get }
+}
+
+extension View: Anchorable {}
+extension LayoutGuide: Anchorable {}
+
+extension VFL.Bound {
+    private func anchorable(for view: View) -> Anchorable {
+        switch self {
+        case .superview:
+            return view
+        case .layoutMargin:
+            #if os(iOS) || os(tvOS)
+                return view.layoutMarginsGuide
+            #else
+                // macOS cannot support layout margins. silently fall back to superview.
+                return view
+            #endif
+        }
+    }
+
+    func leftAnchor(for view: View) -> NSLayoutXAxisAnchor {
+        return anchorable(for: view).leftAnchor
+    }
+
+    func rightAnchor(for view: View) -> NSLayoutXAxisAnchor {
+        return anchorable(for: view).rightAnchor
+    }
+
+    func topAnchor(for view: View) -> NSLayoutYAxisAnchor {
+        return anchorable(for: view).topAnchor
+    }
+
+    func bottomAnchor(for view: View) -> NSLayoutYAxisAnchor {
+        return anchorable(for: view).bottomAnchor
+    }
+}
