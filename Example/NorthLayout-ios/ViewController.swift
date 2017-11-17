@@ -80,6 +80,7 @@ class ViewController: UIViewController {
         super.loadView()
         view.backgroundColor = .white
 
+        // view controller level autolayout respecting safe area layout guides (or top/bottom layout guides for iOS 10 and before)
         let autolayout = northLayoutFormat(["p": 8, "iconWidth": iconWidth], [
             "header": headerView,
             "icon": iconView,

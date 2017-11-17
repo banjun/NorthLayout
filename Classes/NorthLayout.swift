@@ -53,23 +53,32 @@ extension View {
             }
         }
         return { (format: String) in
-            let edgeDecomposed = try? VFL(format: format).edgeDecomposed(format: format)
-            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: edgeDecomposed?.middle ?? format, options: options, metrics: metrics as [String : NSNumber]?, views: views))
-            if !format.hasPrefix("V:") {
-                if let leftConnection = edgeDecomposed?.first, let leftView = views[leftConnection.2.name] {
-                    leftConnection.1.predicateList.constraints(lhs: leftView.leftAnchor, rhs: leftConnection.0.leftAnchor(for: self), metrics: metrics)
+            // in case NorthLayout parse failure, fall back to standard VFL
+            guard let vfl = try? VFL(format: format) else {
+                self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: metrics as [String : NSNumber]?, views: views))
+                return
+            }
+
+            // decompose edge bounds to replace and add constraints with decomposed standard VFL
+            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vfl.edgeDecomposed(format: format), options: options, metrics: metrics as [String : NSNumber]?, views: views))
+
+            // replace edge bounds into superview or layoutMarginsguide
+            switch vfl.orientation {
+            case .h:
+                if let leftBound = vfl.firstBound, let leftView = views[vfl.firstView.name] {
+                    leftBound.1.predicateList.constraints(lhs: leftView.leftAnchor, rhs: leftBound.0.leftAnchor(for: self), metrics: metrics)
                 }
                 
-                if let rightConnection = edgeDecomposed?.last, let rightView = views[rightConnection.0.name] {
-                    rightConnection.1.predicateList.constraints(lhs: rightConnection.2.rightAnchor(for: self), rhs: rightView.rightAnchor, metrics: metrics)
+                if let rightBound = vfl.lastBound, let rightView = views[vfl.lastView.name] {
+                    rightBound.0.predicateList.constraints(lhs: rightBound.1.rightAnchor(for: self), rhs: rightView.rightAnchor, metrics: metrics)
                 }
-            } else {
-                if let leftConnection = edgeDecomposed?.first, let leftView = views[leftConnection.2.name] {
-                    leftConnection.1.predicateList.constraints(lhs: leftView.topAnchor, rhs: leftConnection.0.topAnchor(for: self), metrics: metrics)
+            case .v:
+                if let topBound = vfl.firstBound, let topView = views[vfl.firstView.name] {
+                    topBound.1.predicateList.constraints(lhs: topView.topAnchor, rhs: topBound.0.topAnchor(for: self), metrics: metrics)
                 }
                 
-                if let rightConnection = edgeDecomposed?.last, let rightView = views[rightConnection.0.name] {
-                    rightConnection.1.predicateList.constraints(lhs: rightConnection.2.bottomAnchor(for: self), rhs: rightView.bottomAnchor, metrics: metrics)
+                if let bottomBound = vfl.lastBound, let bottomView = views[vfl.lastView.name] {
+                    bottomBound.0.predicateList.constraints(lhs: bottomBound.1.bottomAnchor(for: self), rhs: bottomView.bottomAnchor, metrics: metrics)
                 }
             }
         }
@@ -80,7 +89,7 @@ extension View {
 #if os(iOS)
     extension UIViewController {
         /// autolayout by replacing vertical edges `|`...`|` to `topLayoutGuide` and `bottomLayoutGuide`
-        public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutFormatOptions = [], useSafeArea: Bool = true) -> (String) -> Void {
+        public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutFormatOptions = []) -> (String) -> Void {
             guard let view = view else { fatalError() }
             guard view.enclosingScrollView == nil else {
                 // fallback to the view.northLayoutFormat because UIScrollView.contentSize is measured by its layout but not by the layout guides of this view controller
