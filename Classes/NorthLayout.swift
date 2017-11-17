@@ -112,26 +112,19 @@ extension View {
             guard #available(iOS 11, *) else {
                 // iOS 10 layoutMarginsGuide does not follow to top/bottom layout guides nor safe area layout guides.
                 // we use the layout guides to contain views within them, i.e. do not allow to extend to the below of navbars/toolbars.
-
-                let topMarginGuide = UILayoutGuide()
-                let bottomMarginGuide = UILayoutGuide()
-                [topMarginGuide, bottomMarginGuide].forEach {view.addLayoutGuide($0)}
-                topMarginGuide.bottomAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 8).isActive = true
-                bottomLayoutGuide.topAnchor.constraint(equalTo: bottomMarginGuide.topAnchor, constant: 8).isActive = true
+                // as top/bottom margin of root view of vc is zero, we replace both `||` and `|` to top/bottom layout guides
 
                 var vs = views
                 vs["topLayoutGuide"] = topLayoutGuide
-                vs["topMarginGuide"] = topMarginGuide
                 vs["bottomLayoutGuide"] = bottomLayoutGuide
-                vs["bottomMarginGuide"] = bottomMarginGuide
 
                 let autolayout = view.northLayoutFormat(metrics, vs, options: options)
 
                 return { (format: String) in
                     autolayout(!format.hasPrefix("V:") ? format : format
-                        .replacingOccurrences(of: "V:||", with: "V:[topMarginGuide]")
+                        .replacingOccurrences(of: "V:||", with: "V:[topLayoutGuide]")
                         .replacingOccurrences(of: "V:|", with: "V:[topLayoutGuide]")
-                        .replacingOccurrences(of: "||", with: "[bottomMarginGuide]")
+                        .replacingOccurrences(of: "||", with: "[bottomLayoutGuide]")
                         .replacingOccurrences(of: "|", with: "[bottomLayoutGuide]"))
                 }
             }
