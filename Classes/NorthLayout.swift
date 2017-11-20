@@ -11,6 +11,7 @@
     typealias Size = CGSize
     typealias LayoutPriority = UILayoutPriority
     typealias LayoutAxis = UILayoutConstraintAxis
+    typealias LayoutGuide = UILayoutGuide
     public typealias FormatOptions = NSLayoutFormatOptions
     extension View: LayoutPrioritizable {}
 
@@ -29,6 +30,7 @@
     typealias Size = NSSize
     typealias LayoutPriority = NSLayoutConstraint.Priority
     typealias LayoutAxis = NSLayoutConstraint.Orientation
+    typealias LayoutGuide = NSLayoutGuide
     public typealias FormatOptions = NSLayoutConstraint.FormatOptions
 
     public final class MinView: NSView, MinLayoutable {
@@ -51,7 +53,34 @@ extension View {
             }
         }
         return { (format: String) in
-            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: metrics as [String : NSNumber]?, views: views))
+            // in case NorthLayout parse failure, fall back to standard VFL
+            guard let vfl = try? VFL(format: format) else {
+                self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: metrics as [String : NSNumber]?, views: views))
+                return
+            }
+
+            // decompose edge bounds to replace and add constraints with decomposed standard VFL
+            self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vfl.edgeDecomposed(format: format), options: options, metrics: metrics as [String : NSNumber]?, views: views))
+
+            // replace edge bounds into superview or layoutMarginsguide
+            switch vfl.orientation {
+            case .h:
+                if let leftBound = vfl.firstBound, let leftView = views[vfl.firstView.name] {
+                    leftBound.1.predicateList.constraints(lhs: leftView.leftAnchor, rhs: leftBound.0.leftAnchor(for: self), metrics: metrics)
+                }
+                
+                if let rightBound = vfl.lastBound, let rightView = views[vfl.lastView.name] {
+                    rightBound.0.predicateList.constraints(lhs: rightBound.1.rightAnchor(for: self), rhs: rightView.rightAnchor, metrics: metrics)
+                }
+            case .v:
+                if let topBound = vfl.firstBound, let topView = views[vfl.firstView.name] {
+                    topBound.1.predicateList.constraints(lhs: topView.topAnchor, rhs: topBound.0.topAnchor(for: self), metrics: metrics)
+                }
+                
+                if let bottomBound = vfl.lastBound, let bottomView = views[vfl.lastView.name] {
+                    bottomBound.0.predicateList.constraints(lhs: bottomBound.1.bottomAnchor(for: self), rhs: bottomView.bottomAnchor, metrics: metrics)
+                }
+            }
         }
     }
 }
@@ -60,38 +89,35 @@ extension View {
 #if os(iOS)
     extension UIViewController {
         /// autolayout by replacing vertical edges `|`...`|` to `topLayoutGuide` and `bottomLayoutGuide`
-        public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutFormatOptions = [], useSafeArea: Bool = true) -> (String) -> Void {
+        public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutFormatOptions = []) -> (String) -> Void {
             guard let view = view else { fatalError() }
             guard view.enclosingScrollView == nil else {
                 // fallback to the view.northLayoutFormat because UIScrollView.contentSize is measured by its layout but not by the layout guides of this view controller
                 return view.northLayoutFormat(metrics, views, options: options)
             }
 
-            var vs = views
-            vs["topLayoutGuide"] = topLayoutGuide
-            vs["bottomLayoutGuide"] = bottomLayoutGuide
-            let autolayout = view.northLayoutFormat(metrics, vs, options: options)
-            let autolayoutWithVerticalGuides: (String) -> Void = { format in
-                autolayout(!format.hasPrefix("V:") ? format : format
-                    .replacingOccurrences(of: "V:|", with: "V:[topLayoutGuide]")
-                    .replacingOccurrences(of: "|", with: "[bottomLayoutGuide]"))
-            }
+            guard #available(iOS 11, *) else {
+                // iOS 10 layoutMarginsGuide does not follow to top/bottom layout guides nor safe area layout guides.
+                // we use the layout guides to contain views within them, i.e. do not allow to extend to the below of navbars/toolbars.
+                // as top/bottom margin of root view of vc is zero, we replace both `||` and `|` to top/bottom layout guides
 
-            guard #available(iOS 11, tvOS 11, *), useSafeArea else { return autolayoutWithVerticalGuides }
-            let safeAreaLayoutGuide = view.safeAreaLayoutGuide
+                var vs = views
+                vs["topLayoutGuide"] = topLayoutGuide
+                vs["bottomLayoutGuide"] = bottomLayoutGuide
 
-            return { (format: String) in
-                let edgeDecomposed = try? VFL(format: format).edgeDecomposed(format: format)
-                autolayoutWithVerticalGuides(edgeDecomposed?.middle ?? format)
+                let autolayout = view.northLayoutFormat(metrics, vs, options: options)
 
-                if let leftConnection = edgeDecomposed?.first, let leftView = views[leftConnection.1.name] {
-                    leftConnection.0.predicateList.constraints(lhs: leftView.leftAnchor, rhs: safeAreaLayoutGuide.leftAnchor, metrics: metrics)
-                }
-
-                if let rightConnection = edgeDecomposed?.last, let rightView = views[rightConnection.1.name] {
-                    rightConnection.0.predicateList.constraints(lhs: safeAreaLayoutGuide.rightAnchor, rhs: rightView.rightAnchor, metrics: metrics)
+                return { (format: String) in
+                    autolayout(!format.hasPrefix("V:") ? format : format
+                        .replacingOccurrences(of: "V:||", with: "V:[topLayoutGuide]")
+                        .replacingOccurrences(of: "V:|", with: "V:[topLayoutGuide]")
+                        .replacingOccurrences(of: "||", with: "[bottomLayoutGuide]")
+                        .replacingOccurrences(of: "|", with: "[bottomLayoutGuide]"))
                 }
             }
+
+            // in iOS 11 (and later), just use view NorthLayout as view.layoutMarginsGuide follows safe area
+            return view.northLayoutFormat(metrics, views, options: options)
         }
     }
 

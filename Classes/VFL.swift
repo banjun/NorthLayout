@@ -2,25 +2,18 @@ import Foundation
 
 extension VFL {
     /// decompose visual format into both side of edge connections and a middle remainder format string
-    func edgeDecomposed(format: String) throws -> (first: (Connection, VFL.View)?, middle: String, last: (Connection, VFL.View)?) {
-        var middle = format
-        let vfl = try VFL(format: format)
-        guard case .h = vfl.orientation else { return (nil, format, nil) } // only support horizontals
-
-        let first = vfl.firstBound.map {($0, vfl.firstView)}
-        let last = vfl.lastBound.map {($0, vfl.lastView)}
-
+    func edgeDecomposed(format: String) -> String {
         // strip decomposed edge connections
         // we do not generate a format string from parsed VFL, for some reliability
         // instead, use a knowledge that first `[` and last `]` separate edge connections
-        if first != nil {
-            middle = String(middle.drop {$0 != "["})
-        }
-        if last != nil {
-            middle = String(middle.reversed().drop {$0 != "]"}.reversed())
-        }
+        let decomposed = format
+            .drop {$0 != "["}
+            .reversed().drop {$0 != "]"}.reversed()
 
-        return (first, middle, last)
+        switch orientation {
+        case .h: return "H:" + decomposed
+        case .v: return "V:" + decomposed
+        }
     }
 }
 
@@ -80,5 +73,59 @@ extension VFL.PredicateList {
         }
         cs.forEach {$0.isActive = true}
         return cs
+    }
+}
+
+protocol Anchorable {
+    var leftAnchor: NSLayoutXAxisAnchor { get }
+    var rightAnchor: NSLayoutXAxisAnchor { get }
+    var topAnchor: NSLayoutYAxisAnchor { get }
+    var bottomAnchor: NSLayoutYAxisAnchor { get }
+}
+
+extension View: Anchorable {}
+extension LayoutGuide: Anchorable {}
+
+extension VFL.Bound {
+    private func anchorable(for view: View) -> Anchorable {
+        switch self {
+        case .superview:
+            return view
+        case .layoutMargin:
+            #if os(iOS) || os(tvOS)
+                guard #available(iOS 11, tvOS 11, *) else {
+                    // in iOS 10, reading layoutMarginsGuide when frame.size is zero and autolayout disabled
+                    // has side-effect causing layoutMargins not to work with margins.
+                    // workaround: simply enclose by setting false/true
+                    let prev = view.translatesAutoresizingMaskIntoConstraints
+                    if view.frame.size == .zero {
+                        view.translatesAutoresizingMaskIntoConstraints = false
+                    }
+                    let r = view.layoutMarginsGuide
+                    view.translatesAutoresizingMaskIntoConstraints = prev
+                    return r
+                }
+                return view.layoutMarginsGuide
+            #else
+                // macOS cannot support layout margins. silently fall back to superview.
+                return view
+            #endif
+        }
+    }
+
+    func leftAnchor(for view: View) -> NSLayoutXAxisAnchor {
+        return anchorable(for: view).leftAnchor
+    }
+
+    func rightAnchor(for view: View) -> NSLayoutXAxisAnchor {
+        return anchorable(for: view).rightAnchor
+    }
+
+    func topAnchor(for view: View) -> NSLayoutYAxisAnchor {
+        return anchorable(for: view).topAnchor
+    }
+
+    func bottomAnchor(for view: View) -> NSLayoutYAxisAnchor {
+        return anchorable(for: view).bottomAnchor
     }
 }
