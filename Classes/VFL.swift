@@ -93,6 +93,18 @@ extension VFL.Bound {
             return view
         case .layoutMargin:
             #if os(iOS) || os(tvOS)
+                guard #available(iOS 11, tvOS 11, *) else {
+                    // in iOS 10, reading layoutMarginsGuide when frame.size is zero and autolayout disabled
+                    // has side-effect causing layoutMargins not to work with margins.
+                    // workaround: simply enclose by setting false/true
+                    let prev = view.translatesAutoresizingMaskIntoConstraints
+                    if view.frame.size == .zero {
+                        view.translatesAutoresizingMaskIntoConstraints = false
+                    }
+                    let r = view.layoutMarginsGuide
+                    view.translatesAutoresizingMaskIntoConstraints = prev
+                    return r
+                }
                 return view.layoutMarginsGuide
             #else
                 // macOS cannot support layout margins. silently fall back to superview.
