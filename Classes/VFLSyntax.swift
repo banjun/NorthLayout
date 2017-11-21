@@ -120,7 +120,7 @@ extension VFL {
     static var parser: Parser<Character, VFL> {
         let metricName = identifier
         let positiveNumber: Parser<Character, CGFloat> = numberParser >>- {$0 > 0 ? pure($0) : fail(.Mismatch(AnyCollection([]), "positive", "negative: \($0)"))}
-        let simplePredicate: Parser<Character, VFL.SimplePredicate> = ({.metricName($0)} <^> metricName) <|> ({.positiveNumber($0)} <^> positiveNumber)
+        let simplePredicate: Parser<Character, VFL.SimplePredicate> = ({.positiveNumber($0)} <^> positiveNumber) <|> ({.metricName($0)} <^> metricName)
         let predicateListWithParens: Parser<Character, [VFL.Predicate]> = extend
             <^> (char("(") *> ({[$0]} <^> VFL.Predicate.parser))
             <*> zeroOrMore(char(",") *> VFL.Predicate.parser) <* char(")")
