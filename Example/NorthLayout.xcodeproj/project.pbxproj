@@ -14,6 +14,7 @@
 		EA36301D1AFE29520015000C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA36301C1AFE29520015000C /* Images.xcassets */; };
 		EA3630201AFE29520015000C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA36301E1AFE29520015000C /* MainMenu.xib */; };
 		EA36302C1AFE29520015000C /* NorthLayout_osxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36302B1AFE29520015000C /* NorthLayout_osxTests.swift */; };
+		EA9400401FC53B6A0075017F /* VFLSyntaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94003F1FC53B6A0075017F /* VFLSyntaxTests.swift */; };
 		EAD9133E1AFE1FDE00F46CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9133D1AFE1FDE00F46CB9 /* AppDelegate.swift */; };
 		EAD913401AFE1FDE00F46CB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD9133F1AFE1FDE00F46CB9 /* ViewController.swift */; };
 		EAD913451AFE1FDE00F46CB9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD913441AFE1FDE00F46CB9 /* Images.xcassets */; };
@@ -55,6 +56,7 @@
 		EA3630251AFE29520015000C /* NorthLayout-osx-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NorthLayout-osx-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA36302A1AFE29520015000C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA36302B1AFE29520015000C /* NorthLayout_osxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthLayout_osxTests.swift; sourceTree = "<group>"; };
+		EA94003F1FC53B6A0075017F /* VFLSyntaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFLSyntaxTests.swift; sourceTree = "<group>"; };
 		EAD913381AFE1FDE00F46CB9 /* NorthLayout-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NorthLayout-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD9133C1AFE1FDE00F46CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAD9133D1AFE1FDE00F46CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				EAD913531AFE1FDE00F46CB9 /* NorthLayoutTests.swift */,
+				EA94003F1FC53B6A0075017F /* VFLSyntaxTests.swift */,
 				EAD913511AFE1FDE00F46CB9 /* Supporting Files */,
 			);
 			path = "NorthLayout-ios-Tests";
@@ -536,9 +539,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-ios-Tests/Pods-NorthLayout-ios-Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -578,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAD913541AFE1FDE00F46CB9 /* NorthLayoutTests.swift in Sources */,
+				EA9400401FC53B6A0075017F /* VFLSyntaxTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

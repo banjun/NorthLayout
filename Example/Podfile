@@ -6,6 +6,8 @@ target 'NorthLayout-ios' do
 
   target 'NorthLayout-ios-Tests' do
     inherit! :search_paths
+    pod 'Quick'
+    pod 'Nimble'
   end
 end
 
