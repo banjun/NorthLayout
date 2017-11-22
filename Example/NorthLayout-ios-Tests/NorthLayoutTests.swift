@@ -84,4 +84,53 @@ class NorthLayoutTests: XCTestCase {
         XCTAssertEqual(l.frame.origin.x, 160)
         XCTAssertEqual(l.frame.width, 320)
     }
+
+    func testLayoutMargins() {
+        let content = UIView()
+        let autolayout = rootView.northLayoutFormat([:], [
+            "content": content])
+        autolayout("H:||[content]||")
+        autolayout("V:||[content]||")
+        rootView.layoutIfNeeded()
+
+        if #available(iOS 11, *) {
+            XCTAssertEqual(content.frame.minX, rootView.safeAreaInsets.left + 8)
+            XCTAssertEqual(content.frame.minY, rootView.safeAreaInsets.top + 8)
+            XCTAssertEqual(content.frame.maxX, rootView.frame.width - rootView.safeAreaInsets.right - 8)
+            XCTAssertEqual(content.frame.maxY, rootView.frame.height - rootView.safeAreaInsets.bottom - 8)
+        } else {
+
+        }
+    }
+
+    func testLayoutMarginsInInnerView() {
+        let inner = MinView()
+        let content = UIView()
+        let innerLayout = inner.northLayoutFormat([:], ["content": content])
+        innerLayout("H:||[content]||")
+        innerLayout("V:||[content]||")
+
+        let rootLayout = rootView.northLayoutFormat([:], ["inner": inner])
+        rootLayout("H:|[inner(==100)]")
+        rootLayout("V:|[inner(==100)]")
+
+        rootView.layoutIfNeeded()
+
+        // inner layout stick to top left corner
+        XCTAssertEqual(inner.frame.minX, 0)
+        XCTAssertEqual(inner.frame.minY, 0)
+        XCTAssertEqual(inner.frame.maxX, 100)
+        XCTAssertEqual(inner.frame.maxY, 100)
+
+        if #available(iOS 11, *) {
+            // innner content layout avoids safe area
+            XCTAssertEqual(content.frame.minX, rootView.safeAreaInsets.left + 8)
+            XCTAssertEqual(content.frame.minY, rootView.safeAreaInsets.top + 8)
+            // assuming right bottom are not overlapping to safe area, stick to layout margins of inner
+            XCTAssertEqual(content.frame.maxX, inner.frame.width - 8)
+            XCTAssertEqual(content.frame.maxY, inner.frame.height - 8)
+        } else {
+
+        }
+    }
 }
