@@ -41,15 +41,15 @@ class NorthLayoutTests: XCTestCase {
         autolayout("H:|-p-[label]-p-[field]-p-|")
         autolayout("V:|-p-[label]")
         autolayout("V:|-p-[field]")
-        
+
         rootView.layoutIfNeeded()
         
         XCTAssertEqual(label.frame.origin.x, p)
         XCTAssertEqual(field.frame.origin.x, label.frame.maxX + p)
         XCTAssertEqual(field.frame.maxX, rootView.frame.width - p)
         
-        XCTAssertEqual(label.frame.origin.y, p)
-        XCTAssertEqual(field.frame.origin.y, p)
+        XCTAssertEqual(label.frame.origin.y, p, accuracy: 1 / window.screen.scale)
+        XCTAssertEqual(field.frame.origin.y, p, accuracy: 1 / window.screen.scale)
     }
 
     func testOnLabel() {
