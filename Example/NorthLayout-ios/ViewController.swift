@@ -87,6 +87,17 @@ class ViewController: UIViewController {
         return b
     }()
 
+    let safeAreaExampleButton: UIButton = {
+        let b = UIButton(type: .system)
+        b.setTitle("Safe Area Example >", for: [])
+        b.backgroundColor = UIColor(red: 0.17, green: 0.29, blue: 0.45, alpha: 1.0)
+        b.setTitleColor(.white, for: [])
+        b.layer.cornerRadius = 4
+        b.clipsToBounds = true
+        b.addTarget(self, action: #selector(showViewLevelSafeAreaExample), for: .touchUpInside)
+        return b
+    }()
+
     override func loadView() {
         super.loadView()
         view.backgroundColor = .white
@@ -101,18 +112,19 @@ class ViewController: UIViewController {
             "fav": favButton,
             "navToggle": navToggleButton,
             "simpleExample": simpleExampleButton,
-            ])
+            "safeAreaExample": safeAreaExampleButton])
         autolayout("H:|[header]|")
         autolayout("V:|[header(<=192)]")
         autolayout("H:||[icon(==iconWidth)]-p-[name]-p-[date]||")
         autolayout("H:||[text]||")
         autolayout("H:||[navToggle]-p-[fav(==navToggle)]||")
         autolayout("H:||[simpleExample]||")
+        autolayout("H:||[safeAreaExample]||")
         autolayout("V:[header]-p-[icon(==iconWidth)]-p-[text]")
         autolayout("V:[header]-p-[name(==icon)]")
         autolayout("V:[header]-p-[date]")
         autolayout("V:[text]-p-[fav]")
-        autolayout("V:[text]-p-[navToggle]-(>=p)-[simpleExample]-p-||")
+        autolayout("V:[text]-p-[navToggle]-(>=p)-[simpleExample]-p-[safeAreaExample]-p-||")
     }
 
     override func viewDidLayoutSubviews() {
@@ -137,6 +149,10 @@ class ViewController: UIViewController {
 
     @objc func showSimpleExample() {
         show(SimpleExampleViewController(nibName: nil, bundle: nil), sender: nil)
+    }
+
+    @objc func showViewLevelSafeAreaExample() {
+        show(ViewLevelSafeAreaExampleViewController(nibName: nil, bundle: nil), sender: nil)
     }
 }
 
