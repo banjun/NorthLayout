@@ -10,7 +10,7 @@ import UIKit
 import NorthLayout
 
 
-private func colorImage(_ color: UIColor) -> UIImage {
+func colorImage(_ color: UIColor) -> UIImage {
     UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
     color.set()
     UIRectFill(CGRect(x: 0, y: 0, width: 1, height: 1))
@@ -65,14 +65,25 @@ class ViewController: UIViewController {
         return b
     }()
 
-    let replyButton: UIButton = {
+    let navToggleButton: UIButton = {
         let b = UIButton(type: .system)
-        b.setTitle("Nav", for: [])
+        b.setTitle("Nav Bar", for: [])
         b.backgroundColor = UIColor(red: 0.17, green: 0.29, blue: 0.45, alpha: 1.0)
         b.setTitleColor(.white, for: [])
         b.layer.cornerRadius = 4
         b.clipsToBounds = true
         b.addTarget(self, action: #selector(nav), for: .touchUpInside)
+        return b
+    }()
+
+    let simpleExampleButton: UIButton = {
+        let b = UIButton(type: .system)
+        b.setTitle("Simple Layout Example >", for: [])
+        b.backgroundColor = UIColor(red: 0.17, green: 0.29, blue: 0.45, alpha: 1.0)
+        b.setTitleColor(.white, for: [])
+        b.layer.cornerRadius = 4
+        b.clipsToBounds = true
+        b.addTarget(self, action: #selector(showSimpleExample), for: .touchUpInside)
         return b
     }()
 
@@ -88,18 +99,20 @@ class ViewController: UIViewController {
             "date": dateLabel,
             "text": textLabel,
             "fav": favButton,
-            "reply": replyButton,
+            "navToggle": navToggleButton,
+            "simpleExample": simpleExampleButton,
             ])
         autolayout("H:|[header]|")
         autolayout("V:|[header(<=192)]")
         autolayout("H:||[icon(==iconWidth)]-p-[name]-p-[date]||")
         autolayout("H:||[text]||")
-        autolayout("H:||[reply]-p-[fav(==reply)]||")
+        autolayout("H:||[navToggle]-p-[fav(==navToggle)]||")
+        autolayout("H:||[simpleExample]||")
         autolayout("V:[header]-p-[icon(==iconWidth)]-p-[text]")
         autolayout("V:[header]-p-[name(==icon)]")
         autolayout("V:[header]-p-[date]")
         autolayout("V:[text]-p-[fav]")
-        autolayout("V:[text]-p-[reply]")
+        autolayout("V:[text]-p-[navToggle]-(>=p)-[simpleExample]-p-||")
     }
 
     override func viewDidLayoutSubviews() {
@@ -120,6 +133,10 @@ class ViewController: UIViewController {
 
     @objc func fav() {
         headerView.bioLabel.text = (headerView.bioLabel.text ?? "") + "\n⭐️"
+    }
+
+    @objc func showSimpleExample() {
+        show(SimpleExampleViewController(nibName: nil, bundle: nil), sender: nil)
     }
 }
 

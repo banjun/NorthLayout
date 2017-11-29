@@ -15,15 +15,18 @@ let nameLabel = UILabel() // and customize...
 
 override func loadView() {
     super.loadView()
-    
+    title = "Simple Example"
+    view.backgroundColor = .white
     let autolayout = northLayoutFormat(["p": 8], [
         "icon": iconView,
         "name": nameLabel])
-    autolayout("H:|-p-[icon(==64)]") // 64pt width icon on left side with margin p
-    autolayout("H:|-p-[name]-p-|") // full width label with margin p
-    autolayout("V:|-p-[icon(==64)]-p-[name]") // stack them vertically
+    autolayout("H:||[icon(==64)]") // 64pt width icon on left side with default margin
+    autolayout("H:||[name]||") // full width label with default margin
+    autolayout("V:||-p-[icon(==64)]-p-[name]") // stack them vertically
 }
 ```
+
+![](misc/ios-example.png)
 
 See also `Example` project.
 
