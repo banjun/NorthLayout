@@ -51,6 +51,12 @@ override init(frame: CGRect) {
 
 See also `Example` project.
 
+## Advanced Example
+
+![](misc/northlayout-advanced-example.gif)
+
+See `Example` project.
+
 ## Features
 
 ### 📜 No Storyboards Required
