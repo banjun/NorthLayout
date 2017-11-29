@@ -2,8 +2,9 @@ import UIKit
 import NorthLayout
 
 class SimpleExampleViewController: UIViewController {
-    let iconView: UIImageView = {
-        let v = UIImageView(image: colorImage(UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
+    let iconView: UIView = {
+        let v = UIView(frame: .zero)
+        v.backgroundColor = UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)
         v.layer.cornerRadius = 8
         v.clipsToBounds = true
         return v
