@@ -1,8 +1,9 @@
 import Foundation
 import FootlessParser
 
-// AST for VisualFormatLanguage
-// currently only needed for VFL.edgeDecomposed for Safe Area handling
+// AST for VisualFormatLanguage with an extended format,
+// that enables denoting `||` as Bound.layoutMargin used by VFL.edgeDecomposed
+// for view layout margins, including Safe Area handling
 struct VFL {
     let orientation: Orientation
     let firstBound: (Bound, Connection)?

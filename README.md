@@ -7,6 +7,67 @@
 
 The fast path to autolayout views in code
 
+## Simple Usage
+
+```swift
+let iconView = UIImageView() // and customize...
+let nameLabel = UILabel() // and customize...
+
+override func loadView() {
+    super.loadView()
+    
+    let autolayout = northLayoutFormat(["p": 8], [
+        "icon": iconView,
+        "name": nameLabel])
+    autolayout("H:|-p-[icon(==64)]") // 64pt width icon on left side with margin p
+    autolayout("H:|-p-[name]-p-|") // full width label with margin p
+    autolayout("V:|-p-[icon(==64)]-p-[name]") // stack them vertically
+}
+```
+
+See also `Example` project.
+
+## Features
+
+### 📜 No Storyboards Required
+
+Let's autolayout in code. boilerplates such as `translatesAutoresizingMaskIntoConstraints = false` and adding as subview are coded in `northLayoutFormat()`.
+
+### ↔️ Visual Format Language
+
+Use Visual Format Language (VFL) for layout.
+
+[Auto Layout Guide: Visual Format Language](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage.html)
+
+### ⏸ Extended Visual Format for Layout Margins & Safe Area
+
+In addition to Apple VFL above, NorthLayout introduces `||` syntax for layout margin bounds.
+
+```swift
+// stick to side edges (i.e. screen edges for view of view controller)
+autolayout("H:|[icon1]|")
+
+// stick to side layout margins (avoids non safe areas)
+autolayout("H:||[icon2]||")
+```
+
+### 📚 View Controller level & View level layout
+
+In autolayout, there is some differences in view of view controller and independent view. `northLayoutFormat` is available for view controller and view.
+You can use `|` as topLayoutGuide or bottomLayoutGuide (mainly for before iOS 11) and avoid conflicting scroll adjustments on view controllers.
+You can also code layout simply without a view controller on views.
+
+### 📱🖥 iOS & macOS
+
+Available for UIView & NSView
+
+## Migration to NorthLayout 5
+
+NorthLayout 4 has supported Safe Area by translating `|` bounds as safe area layout guides by default.
+
+NorthLayout 5 adds breaking changes that introduces `||` layout margin guides and thus `|` no longer respects Safe Area.
+Choose `|` to stick to edges, or `||` to inset in layout margins or safe area.
+
 ## Installation
 
 NorthLayout is available through [CocoaPods](http://cocoapods.org). To install
@@ -15,77 +76,6 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "NorthLayout"
 ```
-
-## Usage
-
-* `view.northLayoutFormat(_:_:)` to get autolayout closure for view
-* `autolayout(...)` to layout with [Autolayout Visual Format Language](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage/VisualFormatLanguage.html)
-* no storyboards required
-
-(See also `Example`)
-
-```swift
-override func loadView() {
-    super.loadView()
-
-    view.backgroundColor = .whiteColor()
-
-    let iconView = UIImageView(image: colorImage(UIColor(red: 0.63, green: 0.9, blue: 1, alpha: 1)))
-    let iconWidth = CGFloat(32)
-    iconView.layer.cornerRadius = iconWidth / 2
-    iconView.clipsToBounds = true
-
-    let nameLabel = UILabel()
-    nameLabel.text = "Name"
-
-    let dateLabel = UILabel()
-    dateLabel.text = "1 min ago"
-    dateLabel.font = UIFont.systemFontOfSize(12)
-    dateLabel.textColor = UIColor.lightGrayColor()
-
-    let textLabel = UILabel()
-    textLabel.text = "Some text go here"
-
-    let favButton = UIButton(type: .System)
-    favButton.setTitle("⭐️", forState: .Normal)
-    favButton.backgroundColor = UIColor(red: 0.17, green: 0.29, blue: 0.45, alpha: 1.0)
-    favButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    favButton.layer.cornerRadius = 4
-    favButton.clipsToBounds = true
-
-    let replyButton = UIButton(type: .System)
-    replyButton.setTitle("Reply", forState: .Normal)
-    replyButton.backgroundColor = favButton.backgroundColor
-    replyButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    replyButton.layer.cornerRadius = 4
-    replyButton.clipsToBounds = true
-
-    let autolayout = northLayoutFormat(["p": 8, "iconWidth": iconWidth], [
-        "icon": iconView,
-        "name": nameLabel,
-        "date": dateLabel,
-        "text": textLabel,
-        "fav": favButton,
-        "reply": replyButton,
-        ])
-    autolayout("H:|-p-[icon(==iconWidth)]-p-[name]-p-[date]-p-|")
-    autolayout("H:|-p-[text]-p-|")
-    autolayout("H:|-p-[fav]-p-[reply(==fav)]-p-|")
-    autolayout("V:|-p-[icon(==iconWidth)]-p-[text]")
-    autolayout("V:|-p-[name(==icon)]")
-    autolayout("V:|-p-[date]")
-    autolayout("V:[text]-p-[fav]")
-    autolayout("V:[text]-p-[reply]")
-}
-```
-
-the code generates a layout:
-
-![ios-example](misc/ios-example.png)
-
-with constraints:
-
-![ios-example-constraints](misc/ios-example-constraints.png)
 
 ## The Name
 
