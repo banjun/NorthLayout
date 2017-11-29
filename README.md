@@ -30,6 +30,27 @@ override func loadView() {
 
 See also `Example` project.
 
+## View Level Safe Area Example
+
+```swift
+override init(frame: CGRect) {
+    super.init(frame: frame)
+    // autolayout respecting safe area without reference to container view controller
+    let autolayout = northLayoutFormat([:], [
+        "icon": iconView,
+        "name": nameLabel])
+    autolayout("H:||-(>=0)-[icon(==64)]-(>=0)-||") // 64pt fitting width icon with default margin
+    autolayout("H:||[name]||") // fitting width label with default margin
+    autolayout("V:||[icon(==64)]-[name]||") // stack them vertically
+    // constrain iconView horizontal ambiguity to safe area center
+    layoutMarginsGuide.centerXAnchor.constraint(equalTo: iconView.centerXAnchor).isActive = true
+}
+```
+
+![](misc/northlayout-viewlevel-safearea-example.gif)
+
+See also `Example` project.
+
 ## Features
 
 ### 📜 No Storyboards Required
