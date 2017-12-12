@@ -107,6 +107,19 @@ it, simply add the following line to your Podfile:
 pod "NorthLayout"
 ```
 
+## Code Snippets
+
+Code snippets help writing VFL activated in string literal scope.
+
+```bash
+cd (NorthLayout directory)
+cp CodeSnippets/*.codesnippet ~/Library/Developer/Xcode/UserData/CodeSnippets/
+```
+
+![](misc/codesnippets-1.png)
+
+![](misc/codesnippets-2.png)
+
 ## The Name
 
 NorthLayout is named after where it was cocoapodized, [Lake Toya](http://en.wikipedia.org/wiki/Lake_Tōya) in the North prefecture of Japan, the setting of [Celestial Method](http://en.wikipedia.org/wiki/Celestial_Method).
