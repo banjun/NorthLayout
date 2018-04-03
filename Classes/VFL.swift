@@ -54,7 +54,7 @@ extension VFL.PredicateList {
             guard let constant = p.value(metrics) else { return [] }
             cs = [lhs.constraint(equalTo: rhs, constant: constant)]
         case let .predicateListWithParens(predicates):
-            cs = predicates.flatMap { p in
+            cs = predicates.compactMap { p in
                 guard case let .constant(c) = p.objectOfPredicate else { return nil } // NOTE: For the objectOfPredicate production, viewName is acceptable only if the subject of the predicate is the width or height of a view
                 guard let constant = c.value(metrics) else { return nil }
 
