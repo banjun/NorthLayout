@@ -1,7 +1,7 @@
 PODS:
   - FootlessParser (0.4.1)
   - Nimble (7.0.2)
-  - NorthLayout (5.0.0-beta.2):
+  - NorthLayout (5.1.0):
     - FootlessParser (~> 0.4)
   - Quick (1.2.0)
 
@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FootlessParser: 4705a9a740675b7439d9563f2fad83f7b84fc773
   Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
-  NorthLayout: f8b51110a4ee04c3799ebddd96e8277af3c489b4
+  NorthLayout: 157045b4ef9e94019f00ec9dc66192c2b17c0c61
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 
 PODFILE CHECKSUM: 4ffdced0060a31cc072dab63aec135e23e5b4d02
