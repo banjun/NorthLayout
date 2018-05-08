@@ -1,6 +1,6 @@
 # NorthLayout
 
-[![CI Status](http://img.shields.io/travis/banjun/NorthLayout.svg?style=flat)](https://travis-ci.org/banjun/NorthLayout)
+[![Build Status](https://www.bitrise.io/app/099ef6919e27d42e/status.svg?token=Xj3O0yJCDOX-ynxtFTyJGg)](https://www.bitrise.io/app/099ef6919e27d42e)
 [![Version](https://img.shields.io/cocoapods/v/NorthLayout.svg?style=flat)](http://cocoapods.org/pods/NorthLayout)
 [![License](https://img.shields.io/cocoapods/l/NorthLayout.svg?style=flat)](http://cocoapods.org/pods/NorthLayout)
 [![Platform](https://img.shields.io/cocoapods/p/NorthLayout.svg?style=flat)](http://cocoapods.org/pods/NorthLayout)
