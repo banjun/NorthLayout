@@ -403,7 +403,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-osx/Pods-NorthLayout-osx-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-NorthLayout-osx/Pods-NorthLayout-osx-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FootlessParser-macOS/FootlessParser.framework",
 				"${BUILT_PRODUCTS_DIR}/NorthLayout-macOS/NorthLayout.framework",
 			);
@@ -414,7 +414,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-osx/Pods-NorthLayout-osx-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NorthLayout-osx/Pods-NorthLayout-osx-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A9943AC35B03FA98ABE6A657 /* [CP] Check Pods Manifest.lock */ = {
@@ -459,7 +459,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-ios/Pods-NorthLayout-ios-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-NorthLayout-ios/Pods-NorthLayout-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FootlessParser-iOS/FootlessParser.framework",
 				"${BUILT_PRODUCTS_DIR}/NorthLayout-iOS/NorthLayout.framework",
 			);
@@ -470,7 +470,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-ios/Pods-NorthLayout-ios-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NorthLayout-ios/Pods-NorthLayout-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CFD33987A63FDB9475366573 /* [CP] Check Pods Manifest.lock */ = {
@@ -497,7 +497,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-ios-Tests/Pods-NorthLayout-ios-Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-NorthLayout-ios-Tests/Pods-NorthLayout-ios-Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -508,7 +508,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-ios-Tests/Pods-NorthLayout-ios-Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NorthLayout-ios-Tests/Pods-NorthLayout-ios-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
