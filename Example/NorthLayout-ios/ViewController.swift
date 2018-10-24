@@ -137,7 +137,7 @@ class ViewController: UIViewController {
         // show/hide navigation bar with animations
         guard let nc = navigationController else { return }
         nc.setNavigationBarHidden(!nc.isNavigationBarHidden, animated: true)
-        UIView.animate(withDuration: TimeInterval(UINavigationControllerHideShowBarDuration)) {
+        UIView.animate(withDuration: TimeInterval(UINavigationController.hideShowBarDuration)) {
             self.view.setNeedsUpdateConstraints() // not all the layout changes cause updating constraints
             self.view.layoutIfNeeded() // re-layout within the animation block
         }

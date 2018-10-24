@@ -10,9 +10,9 @@
     typealias View = UIView
     typealias Size = CGSize
     typealias LayoutPriority = UILayoutPriority
-    typealias LayoutAxis = UILayoutConstraintAxis
+    typealias LayoutAxis = NSLayoutConstraint.Axis
     typealias LayoutGuide = UILayoutGuide
-    public typealias FormatOptions = NSLayoutFormatOptions
+    public typealias FormatOptions = NSLayoutConstraint.FormatOptions
     extension View: LayoutPrioritizable {}
 
     public final class MinView: UIView, MinLayoutable {
@@ -89,7 +89,7 @@ extension View {
 #if os(iOS)
     extension UIViewController {
         /// autolayout by replacing vertical edges `|`...`|` to `topLayoutGuide` and `bottomLayoutGuide`
-        public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutFormatOptions = []) -> (String) -> Void {
+        public func northLayoutFormat(_ metrics: [String: CGFloat], _ views: [String: AnyObject], options: NSLayoutConstraint.FormatOptions = []) -> (String) -> Void {
             guard let view = view else { fatalError() }
             guard view.enclosingScrollView == nil else {
                 // fallback to the view.northLayoutFormat because UIScrollView.contentSize is measured by its layout but not by the layout guides of this view controller
