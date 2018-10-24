@@ -243,7 +243,6 @@
 				EA3630131AFE29510015000C /* Frameworks */,
 				EA3630141AFE29510015000C /* Resources */,
 				891BBD7D8639FF2B33C5570E /* [CP] Embed Pods Frameworks */,
-				A6B21C2852BB9BC85BEF8612 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,7 +280,6 @@
 				EAD913351AFE1FDE00F46CB9 /* Frameworks */,
 				EAD913361AFE1FDE00F46CB9 /* Resources */,
 				BCEB559B4F3289A921F0CFA2 /* [CP] Embed Pods Frameworks */,
-				084B8F766A4F869DDC32949D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -301,7 +299,6 @@
 				EAD9134A1AFE1FDE00F46CB9 /* Frameworks */,
 				EAD9134B1AFE1FDE00F46CB9 /* Resources */,
 				D0BB257120FB81A0B507D810 /* [CP] Embed Pods Frameworks */,
-				748FBA464FF5927467BF9C7A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -400,36 +397,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		084B8F766A4F869DDC32949D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-ios/Pods-NorthLayout-ios-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		748FBA464FF5927467BF9C7A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-ios-Tests/Pods-NorthLayout-ios-Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		891BBD7D8639FF2B33C5570E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,21 +415,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-osx/Pods-NorthLayout-osx-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A6B21C2852BB9BC85BEF8612 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NorthLayout-osx/Pods-NorthLayout-osx-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A9943AC35B03FA98ABE6A657 /* [CP] Check Pods Manifest.lock */ = {
