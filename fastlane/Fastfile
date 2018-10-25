@@ -18,7 +18,7 @@ default_platform :ios
 platform :ios do
   desc "Runs all the tests"
   lane :test do
-    cocoapods(podfile: 'Example/Podfile')
+    cocoapods(podfile: 'Example/Podfile', try_repo_update_on_error: true)
     scan(scheme: 'NorthLayout-ios')
   end
 end
@@ -26,7 +26,7 @@ end
 platform :mac do
   desc "Runs all the tests"
   lane :test do
-    cocoapods(podfile: 'Example/Podfile')
+    cocoapods(podfile: 'Example/Podfile', try_repo_update_on_error: true)
     scan(scheme: 'NorthLayout-osx')
   end
 end
