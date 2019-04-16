@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "NorthLayout"
-  s.version          = "3.0.0"
+  s.version          = "3.1.0"
   s.summary          = "Autolayout Visual Format Helper"
   s.description      = <<-DESC
                        fast path to autolayout using the Visual Format like `autolayout("H:|-[label]-|")`
@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/banjun'
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
+  s.swift_version = '4.2'
   s.source_files = 'Classes/**/*'
   s.ios.frameworks = 'UIKit'
   s.osx.frameworks = 'AppKit'
