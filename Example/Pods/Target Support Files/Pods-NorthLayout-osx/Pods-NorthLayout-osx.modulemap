@@ -1,0 +1,6 @@
+framework module Pods_NorthLayout_osx {
+  umbrella header "Pods-NorthLayout-osx-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_NorthLayout_ios_Tests {
+  umbrella header "Pods-NorthLayout-ios-Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
