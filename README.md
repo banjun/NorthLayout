@@ -9,6 +9,7 @@ The fast path to autolayout views in code
 
 ## Talks
 
+<https://speakerdeck.com/banjun/auto-layout-with-an-extended-visual-format-language> at AltConf19
 <https://speakerdeck.com/banjun/lets-start-vfl>
 
 ## Simple Usage
