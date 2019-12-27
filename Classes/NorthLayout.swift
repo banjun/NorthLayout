@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 banjun. All rights reserved.
 //
 #if os(iOS)
-    import class UIKit.UIView
+    import UIKit
     typealias View = UIView
     typealias Size = CGSize
     typealias LayoutPriority = UILayoutPriority
@@ -25,7 +25,7 @@
     }
 
 #else
-    import class AppKit.NSView
+    import AppKit
     typealias View = NSView
     typealias Size = NSSize
     typealias LayoutPriority = NSLayoutConstraint.Priority
