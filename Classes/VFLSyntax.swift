@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 import FootlessParser
 
 // AST for VisualFormatLanguage with an extended format,
