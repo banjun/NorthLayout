@@ -1,4 +1,10 @@
 import Foundation
+import CoreGraphics
+#if os(iOS)
+    import UIKit
+#else
+    import AppKit
+#endif
 
 extension VFL {
     /// decompose visual format into both side of edge connections and a middle remainder format string

@@ -5,8 +5,9 @@
 //  Created by BAN Jun on 5/9/15.
 //  Copyright (c) 2015 banjun. All rights reserved.
 //
+import CoreGraphics
 #if os(iOS)
-    import class UIKit.UIView
+    import UIKit
     typealias View = UIView
     typealias Size = CGSize
     typealias LayoutPriority = UILayoutPriority
@@ -25,7 +26,7 @@
     }
 
 #else
-    import class AppKit.NSView
+    import AppKit
     typealias View = NSView
     typealias Size = NSSize
     typealias LayoutPriority = NSLayoutConstraint.Priority
