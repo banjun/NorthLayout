@@ -12,3 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: swift build
+  podspec:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: bundle update --bundler
+    - run: bundle install
+    - run: bundle exec pod lib lint
