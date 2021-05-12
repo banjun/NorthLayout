@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "1250"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0DD888C94F6D9EB7ACD1BE22BB2AA98F"
+               BlueprintIdentifier = "93B13AC370E574F172725BB0379BEDD2"
                BuildableName = "Pods_NorthLayout_ios.framework"
                BlueprintName = "Pods-NorthLayout-ios"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -40,8 +40,17 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "EAD913371AFE1FDE00F46CB9"
+            BuildableName = "NorthLayout-ios.app"
+            BlueprintName = "NorthLayout-ios"
+            ReferencedContainer = "container:NorthLayout.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -54,17 +63,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EAD913371AFE1FDE00F46CB9"
-            BuildableName = "NorthLayout-ios.app"
-            BlueprintName = "NorthLayout-ios"
-            ReferencedContainer = "container:NorthLayout.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -86,8 +84,6 @@
             ReferencedContainer = "container:NorthLayout.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
